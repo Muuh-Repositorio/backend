@@ -8,8 +8,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({
     transform: true
   }))
-
-  app.enableCors()
+  
+  app.enableCors() 
 
   const config = new DocumentBuilder()
 	.setTitle('Muuh - API')
