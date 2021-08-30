@@ -1,6 +1,7 @@
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { createTestAccount, createTransport, getTestMessageUrl } from 'nodemailer'
 import { EmailConfiguration, EmailInfo } from "../interfaces/EmailConfiguration";
+import { Email } from "../entity/Email";
 require('dotenv').config()
 
 export class SendEmail implements ServiceCommand {
@@ -13,11 +14,11 @@ export class SendEmail implements ServiceCommand {
         }
     }
 
-    async execute(email: string, route: string): Promise<void> {
+    async execute(email_info: Email): Promise<void> {
         const emailConfiguration = await this.makeEmailConfiguration()
         const transport = createTransport(emailConfiguration)
         
-        const info = await transport.sendMail(this.makeEmail(email, route))
+        const info = await transport.sendMail(email_info.values())
 
         if (process.env.NODE_ENV !== 'production') {
             console.log('URL: ' + getTestMessageUrl(info))
@@ -33,16 +34,6 @@ export class SendEmail implements ServiceCommand {
                 host: 'smtp.ethereal.email',
                 auth: testEmail
             }
-        }
-    }
-
-    private makeEmail(email: string, route: string): EmailInfo {
-        return {
-            from: "Teste",
-            to: email,
-            subject: "Teste",
-            text: `Teste: ${route}`,
-            html: `<h1>Olá!</h1> Verifique seu e-mail aqui: <a href="${route}">${route}</a>`
         }
     }
 }
