@@ -1,13 +1,14 @@
 import { ConflictException, InternalServerErrorException } from "@nestjs/common";
+import console from "console";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { EntityRepository, Repository } from "typeorm";
 import { AuthDto } from "../dto/AuthDto";
-import { User } from "../entity/User.entity";
+import { Users } from "../entity/User.entity";
 
-@EntityRepository(User)
-export class SaveUserInDatabase extends Repository<User> implements ServiceCommand {
+@EntityRepository(Users)
+export class SaveUserInDatabase extends Repository<Users> implements ServiceCommand {
 
-    async execute(authDto: AuthDto): Promise<User> {
+    async execute(authDto: AuthDto): Promise<Users> {
         const { name, cpf, email, password } = authDto
 
         const user = this.create()
@@ -24,6 +25,7 @@ export class SaveUserInDatabase extends Repository<User> implements ServiceComma
             if (error.code === '23505') {
                 throw new ConflictException('Usuário já existe!')
             } else {
+                console.log(error)
                 throw new InternalServerErrorException('Erro no servidor!')
             }
         }

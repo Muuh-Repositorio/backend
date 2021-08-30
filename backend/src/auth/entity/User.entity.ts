@@ -2,7 +2,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, Unique } from "type
 
 @Entity()
 @Unique(["cpf", "email"])
-export class User extends BaseEntity {
+export class Users extends BaseEntity {
     @PrimaryGeneratedColumn()
     idt_user: number
 

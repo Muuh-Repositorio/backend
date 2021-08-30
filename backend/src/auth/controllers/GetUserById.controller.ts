@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ControllerCommand } from "src/Interfaces/ControllerCommand";
-import { User } from "../entity/User.entity";
+import { UserResponse } from "../interfaces/UserResponse";
 import { GetUserById } from "../services"
 
 @ApiTags('User')
@@ -12,7 +12,7 @@ export class GetUserByIdController implements ControllerCommand {
     @Get()
     @ApiOperation({ summary: "Listar um usuário pelo ID" })
     @ApiResponse({ status: 200, description: "Usuário retornado com sucesso!"})
-    handle(@Param('idt_user') idt_user: number): Promise<User> {
+    handle(@Param('idt_user') idt_user: number): Promise<UserResponse> {
         return this.getUserById.execute(idt_user);
     }
 }
