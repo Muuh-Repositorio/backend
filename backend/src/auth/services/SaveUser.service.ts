@@ -25,11 +25,7 @@ export class SaveUser implements ServiceCommand {
 
         const route = `localhost:3000/api/user/${user.idt_user}/email` // Trocar o localhost
 
-        try {
-            await this.sendEmail.execute(authDto.email, route)
-        } catch (error) {
-            console.log(error)
-        }
+        await this.sendEmail.execute(authDto.email, route)
         
         return user
     }
