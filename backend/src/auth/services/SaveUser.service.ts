@@ -3,6 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { AuthDto } from "../dto/AuthDto";
 import { Users } from "../entity/User.entity";
+import { UserResponse } from "../interfaces/UserResponse";
 import { SaveUserInDatabase } from "../repository/SaveUserInDatabase";
 import { HashPassword } from "./HashPassword.service";
 import { SendEmail } from "./SendEmail.service";
@@ -17,7 +18,7 @@ export class SaveUser implements ServiceCommand {
         private sendEmail: SendEmail
     ) {}
 
-    async execute(authDto: AuthDto): Promise<Users> {
+    async execute(authDto: AuthDto): Promise<UserResponse> {
         const hashedPassword = await this.hashPassword.execute(authDto.password)
         authDto.password = hashedPassword
 
@@ -27,6 +28,11 @@ export class SaveUser implements ServiceCommand {
 
         await this.sendEmail.execute(authDto.email, route)
         
-        return user
+        return {
+            idt_user: user.idt_user,
+            cpf: user.cpf,
+            email: user.cpf,
+            name: user.name
+        }
     }
 }
