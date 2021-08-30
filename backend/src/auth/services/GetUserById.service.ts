@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { UserResponse } from "../interfaces/UserResponse";
@@ -13,6 +13,11 @@ export class GetUserById implements ServiceCommand {
 
     async execute(idt_user: number): Promise<UserResponse> {
         const user = await this.userRepository.findOne({ idt_user: idt_user })
+
+        if(!user) {
+            throw new NotFoundException('Usuário não encontrado!')
+        }
+
         return {
             idt_user: user.idt_user,
             cpf: user.cpf,
