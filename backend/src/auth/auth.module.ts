@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { GetUserByIdController, SaveUserController } from './controllers/index';
+import { EmailValidationController, GetUserByIdController, SaveUserController } from './controllers/index';
 import { UserRepository, SaveUserInDatabase } from './repository/index';
-import { GetUserById, HashPassword, SaveUser, SendEmail } from './services/index';
+import { EmailValidation, GetUserById, HashPassword, SaveUser, SendEmail } from './services/index';
 
 @Module({
   imports: [
@@ -13,13 +13,15 @@ import { GetUserById, HashPassword, SaveUser, SendEmail } from './services/index
   ],
   controllers: [
     SaveUserController,
-    GetUserByIdController
+    GetUserByIdController,
+    EmailValidationController
   ],
   providers: [
     GetUserById,
     SaveUser,
     HashPassword,
-    SendEmail
+    SendEmail,
+    EmailValidation
   ]
 })
 export class AuthModule {}

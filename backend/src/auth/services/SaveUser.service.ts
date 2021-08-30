@@ -24,14 +24,14 @@ export class SaveUser implements ServiceCommand {
 
         const user = await this.saveUserInDatabase.execute(authDto);
 
-        const route = `localhost:3000/api/user/${user.idt_user}/email` // Trocar o localhost
+        const route = `localhost:3000/api/user/${user.idt_user}/email_validation` // Trocar o localhost
 
         await this.sendEmail.execute(authDto.email, route)
         
         return {
             idt_user: user.idt_user,
             cpf: user.cpf,
-            email: user.cpf,
+            email: user.email,
             name: user.name
         }
     }
