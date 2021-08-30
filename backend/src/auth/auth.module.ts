@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GetUserByIdController, SaveUserController } from './controllers/index';
 import { UserRepository, SaveUserInDatabase } from './repository/index';
-import { GetUserById, HashPassword, SaveUser } from './services/index';
+import { GetUserById, HashPassword, SaveUser, SendEmail } from './services/index';
 
 @Module({
   imports: [
@@ -18,7 +18,8 @@ import { GetUserById, HashPassword, SaveUser } from './services/index';
   providers: [
     GetUserById,
     SaveUser,
-    HashPassword
+    HashPassword,
+    SendEmail
   ]
 })
 export class AuthModule {}

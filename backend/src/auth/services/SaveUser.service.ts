@@ -5,6 +5,7 @@ import { AuthDto } from "../dto/AuthDto";
 import { Users } from "../entity/User.entity";
 import { SaveUserInDatabase } from "../repository/SaveUserInDatabase";
 import { HashPassword } from "./HashPassword.service";
+import { SendEmail } from "./SendEmail.service";
 
 @Injectable()
 export class SaveUser implements ServiceCommand {
@@ -12,13 +13,20 @@ export class SaveUser implements ServiceCommand {
     constructor(
         @InjectRepository(SaveUserInDatabase)
         private saveUserInDatabase: SaveUserInDatabase,
-        private hashPassword: HashPassword
+        private hashPassword: HashPassword,
+        private sendEmail: SendEmail
     ) {}
 
     async execute(authDto: AuthDto): Promise<Users> {
         const hashedPassword = await this.hashPassword.execute(authDto.password)
         authDto.password = hashedPassword
 
-        return await this.saveUserInDatabase.execute(authDto);
+        const user = await this.saveUserInDatabase.execute(authDto);
+
+        const route = `localhost:3000/api/user/${user.idt_user}/email` // Trocar o localhost
+
+        await this.sendEmail.execute(authDto.email, route)
+        
+        return user
     }
 }
