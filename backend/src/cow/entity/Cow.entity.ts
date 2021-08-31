@@ -9,7 +9,7 @@ export class Cows extends BaseEntity {
     idt_situation: number
 
     @Column()
-    idt_user: number
+    idt_farm: number
 
     @Column()
     idt_type: number
