@@ -1,7 +1,6 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
 
 @Entity()
-@Unique(["cpf", "email"])
 export class Users extends BaseEntity {
     @PrimaryGeneratedColumn()
     idt_user: number
@@ -9,10 +8,10 @@ export class Users extends BaseEntity {
     @Column()
     name: string
 
-    @Column()
+    @Column({ unique: true })
     email: string
 
-    @Column()
+    @Column({ unique: true })
     cpf: string
 
     @Column()
