@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
-import { AuthDto } from "../dto/AuthDto";
+import { UserDto } from "../dto/AuthDto";
 import { Email } from "../entity/Email";
 import { Users } from "../entity/User.entity";
 import { UserResponse } from "../interfaces/UserResponse";
@@ -20,17 +20,17 @@ export class SaveUser implements ServiceCommand {
         private sendEmail: SendEmail
     ) {}
 
-    async execute(authDto: AuthDto): Promise<UserResponse> {
-        const hashedPassword = await this.hashPassword.execute(authDto.password)
-        authDto.password = hashedPassword
+    async execute(userDto: UserDto): Promise<UserResponse> {
+        const hashedPassword = await this.hashPassword.execute(userDto.password)
+        userDto.password = hashedPassword
 
-        const user = await this.saveUserInDatabase.execute(authDto);
+        const user = await this.saveUserInDatabase.execute(userDto);
 
         const route = `localhost:3000/api/user/${user.idt_user}/email_validation` // Trocar o localhost
 
         const email_info: Email = new EmailBuilder()
                                 .from("Teste")
-                                .to(authDto.email)
+                                .to(userDto.email)
                                 .subject("Teste")
                                 .text(`Teste: ${route}`)
                                 .html(`<h1>Olá!</h1> Verifique seu e-mail aqui: <a href="${route}">${route}</a>`)

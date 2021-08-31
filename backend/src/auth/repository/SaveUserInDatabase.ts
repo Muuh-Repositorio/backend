@@ -2,14 +2,14 @@ import { ConflictException, InternalServerErrorException } from "@nestjs/common"
 import console from "console";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { EntityRepository, Repository } from "typeorm";
-import { AuthDto } from "../dto/AuthDto";
+import { UserDto } from "../dto/AuthDto";
 import { Users } from "../entity/User.entity";
 
 @EntityRepository(Users)
 export class SaveUserInDatabase extends Repository<Users> implements ServiceCommand {
 
-    async execute(authDto: AuthDto): Promise<Users> {
-        const { name, cpf, email, password } = authDto
+    async execute(userDto: UserDto): Promise<Users> {
+        const { name, cpf, email, password } = userDto
 
         const user = this.create()
 
