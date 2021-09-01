@@ -3,12 +3,12 @@ import console from "console";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { EntityRepository, Repository } from "typeorm";
 import { CowDto } from "../dto/CowDto";
-import { Cows } from "../entity/Cow.entity";
+import { Cow } from "../entity/Cow.entity";
 
-@EntityRepository(Cows)
-export class SaveCowInDatabase extends Repository<Cows>  {
+@EntityRepository(Cow)
+export class SaveCowInDatabase extends Repository<Cow>  {
 
-    async execute(cowDto: CowDto): Promise<Cows> {
+    async execute(cowDto: CowDto): Promise<Cow> {
         const { idt_situation, idt_farm, idt_type, code, name, weight, birth_date } = cowDto
 
         const cow = this.create()
