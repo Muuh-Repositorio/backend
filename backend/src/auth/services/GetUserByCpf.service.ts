@@ -11,7 +11,7 @@ export class GetUserByCpf implements ServiceCommand{
         private userRepository: UserRepository
     ){}
 
-    async execute(userCpf: string): Promise<UserResponse>{
+    async execute(userCpf: string): Promise<any>{
         const user = await this.userRepository.findOne({ cpf: userCpf })
 
         if(!user){
@@ -20,9 +20,9 @@ export class GetUserByCpf implements ServiceCommand{
 
         return {
             idt_user: user.idt_user,
-            cpf: user.cpf,
             name: user.name,
-            email: user.email
+            email: user.email,
+            cpf:user.cpf
         }
     }
 }
