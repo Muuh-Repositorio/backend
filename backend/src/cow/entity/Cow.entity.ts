@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Cows extends BaseEntity {
@@ -14,7 +14,7 @@ export class Cows extends BaseEntity {
     @Column()
     idt_type: number
 
-    @Column({ unique: true })
+    @Column({unique: true})
     code: string
 
     @Column()

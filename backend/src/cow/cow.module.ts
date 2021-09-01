@@ -1,20 +1,23 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SaveCowController } from './controllers/index';
-import { SaveCowInDatabase } from './repository/index';
-import { SaveCow } from './services/index';
+import { SaveCowController, GetCowByIdController } from './controllers/index';
+import { CowRepository, SaveCowInDatabase } from './repository/index';
+import { GetCowById, SaveCow } from './services/index';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([
+      CowRepository,
       SaveCowInDatabase
     ])
   ],
   controllers: [
     SaveCowController,
+    GetCowByIdController
   ],
   providers: [
     SaveCow,
+    GetCowById
   ]
 })
-export class AuthModule {}
+export class CowModule {}

@@ -6,7 +6,7 @@ import { CowDto } from "../dto/CowDto";
 import { Cows } from "../entity/Cow.entity";
 
 @EntityRepository(Cows)
-export class SaveCowInDatabase extends Repository<Cows> implements ServiceCommand {
+export class SaveCowInDatabase extends Repository<Cows>  {
 
     async execute(cowDto: CowDto): Promise<Cows> {
         const { idt_situation, idt_farm, idt_type, code, name, weight, birth_date } = cowDto
