@@ -5,7 +5,7 @@ import { UserResponse } from "../interfaces/UserResponse";
 import { GetUserById } from "../services"
 
 @ApiTags('User')
-@Controller('/api/user/:idt_user')
+@Controller('/api/user/id/:idt_user')
 export class GetUserByIdController implements ControllerCommand {
     constructor(private getUserById: GetUserById) {}
 
