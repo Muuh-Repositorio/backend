@@ -1,21 +1,27 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SaveFarmController } from './controllers';
+import { AuthModule } from 'src/auth/auth.module';
+import { GetAllFarmsByUserController, GetFarmByCnpjController, SaveFarmController } from './controllers';
 import { FarmRepository, SaveFarmInDatabase} from './repository/index';
-import { SaveFarm } from './services/index';
+import { GetAllFarmsByUser, GetFarmByCnpj, SaveFarm } from './services/index';
 
 @Module({
     imports: [
         TypeOrmModule.forFeature([
             SaveFarmInDatabase,
             FarmRepository
-        ])
+        ]),
+        AuthModule
     ],
     controllers: [
-        SaveFarmController
+        SaveFarmController,
+        GetAllFarmsByUserController,
+        GetFarmByCnpjController
     ],
     providers: [
-        SaveFarm
+        SaveFarm,
+        GetAllFarmsByUser,
+        GetFarmByCnpj
     ]
 })
 export class FarmModule {}
