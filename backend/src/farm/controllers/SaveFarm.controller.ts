@@ -1,10 +1,11 @@
-import { Body, Post } from "@nestjs/common";
+import { Body, Controller, Post } from "@nestjs/common";
 import { ApiOperation, ApiResponse } from "@nestjs/swagger";
 import { ControllerCommand } from "src/Interfaces/ControllerCommand";
 import { FarmDto } from "../dto/FarmDto";
 import { Farm } from "../entity/Farm.entity";
 import { SaveFarm } from "../services";
 
+@Controller()
 export class SaveFarmController implements ControllerCommand {
     
     constructor(private saveFarm: SaveFarm) {}

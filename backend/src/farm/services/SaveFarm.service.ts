@@ -12,7 +12,6 @@ export class SaveFarm implements ServiceCommand {
     constructor(
         @InjectRepository(SaveFarmInDatabase)
         private saveFarmInDatabase: SaveFarmInDatabase,
-        private getUserById: GetUserById
     ) {}
 
     async execute(farmDto: FarmDto): Promise<Farm> {
