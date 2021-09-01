@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EmailValidationController, GetUserByIdController, SaveUserController } from './controllers/index';
+import { UserIdValidation } from './pipes';
 import { UserRepository, SaveUserInDatabase } from './repository/index';
 import { EmailValidation, GetUserById, HashPassword, SaveUser, SendEmail } from './services/index';
 
@@ -21,7 +22,12 @@ import { EmailValidation, GetUserById, HashPassword, SaveUser, SendEmail } from 
     SaveUser,
     HashPassword,
     SendEmail,
-    EmailValidation
+    EmailValidation,
+    UserIdValidation
+  ],
+  exports: [
+    GetUserById,
+    UserIdValidation
   ]
 })
 export class AuthModule {}
