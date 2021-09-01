@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
-import { UserDto } from "../dto/AuthDto";
+import { UserDto } from "../dto/UserDto";
 import { Email } from "../entity/Email";
 import { Users } from "../entity/User.entity";
 import { UserResponse } from "../interfaces/UserResponse";

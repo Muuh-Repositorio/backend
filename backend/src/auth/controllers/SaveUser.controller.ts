@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ControllerCommand } from "src/Interfaces/ControllerCommand";
-import { UserDto } from "../dto/AuthDto";
+import { UserDto } from "../dto/UserDto";
 import { UserResponse } from "../interfaces/UserResponse";
 import { SaveUser } from "../services/SaveUser.service";
 
