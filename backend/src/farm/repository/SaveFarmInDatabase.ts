@@ -12,9 +12,9 @@ export class SaveFarmInDatabase extends Repository<Farm> implements ServiceComma
 
         const farm = this.create()
 
-        // farm.idt_user = idt_user
         farm.name = name
         farm.cnpj = cnpj
+        farm.user = idt_user
 
         try {
             await farm.save()
