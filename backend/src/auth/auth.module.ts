@@ -1,23 +1,34 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthController } from './controllers/auth.controller';
 import { GetUserByCpfController } from './controllers/GetUserByCpf.controller';
 import { EmailValidationController, GetUserByIdController, SaveUserController } from './controllers/index';
+import { JwtStrategy } from './jwt/jwt.strategy';
+import { JwtModule } from '@nestjs/jwt';
+import { LocalStrategy } from './jwt/local.strategy';
 import { UserRepository, SaveUserInDatabase } from './repository/index';
+import { AuthService } from './services/auth.service';
 import { GetUserByCpf } from './services/GetUserByCpf.service';
 import { EmailValidation, GetUserById, HashPassword, SaveUser, SendEmail } from './services/index';
+require('dotenv').config()
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([
       UserRepository,
-      SaveUserInDatabase
-    ])
+      SaveUserInDatabase,
+    ]),
+    JwtModule.register({
+      secret: process.env.secretPassword,
+      signOptions: { expiresIn: '60s' }
+    })
   ],
   controllers: [
     SaveUserController,
     GetUserByIdController,
     GetUserByCpfController,
-    EmailValidationController
+    EmailValidationController,
+    AuthController
   ],
   providers: [
     GetUserById,
@@ -25,7 +36,13 @@ import { EmailValidation, GetUserById, HashPassword, SaveUser, SendEmail } from 
     SaveUser,
     HashPassword,
     SendEmail,
-    EmailValidation
+    EmailValidation,
+    LocalStrategy,
+    AuthService,
+    JwtStrategy
+  ],
+  exports: [
+    AuthService
   ]
 })
 export class AuthModule {}
