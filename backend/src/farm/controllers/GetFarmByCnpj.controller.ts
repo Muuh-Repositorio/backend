@@ -18,4 +18,4 @@ export class GetFarmByCnpjController implements ControllerCommand {
     handle(@Param('cnpj', CnpjValidation) cnpj: string): Promise<Farm> {
         return this.getFarmByCnpj.execute(cnpj);
     }
-}
+} 
