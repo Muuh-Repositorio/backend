@@ -11,7 +11,7 @@ export class GetUserByCpf implements ServiceCommand{
         private userRepository: UserRepository
     ){}
 
-    async execute(userCpf: string): Promise<any>{
+    async execute(userCpf: string): Promise<UserResponse>{
         const user = await this.userRepository.findOne({ cpf: userCpf })
 
         if(!user){

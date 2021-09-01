@@ -2,7 +2,7 @@ import { ConflictException, InternalServerErrorException } from "@nestjs/common"
 import console from "console";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { EntityRepository, Repository } from "typeorm";
-import { UserDto } from "../dto/AuthDto";
+import { UserDto } from "../dto/UserDto";
 import { Users } from "../entity/User.entity";
 
 @EntityRepository(Users)
