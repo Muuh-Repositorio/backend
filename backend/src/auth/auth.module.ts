@@ -40,15 +40,13 @@ require('dotenv').config()
     EmailValidation,
     LocalStrategy,
     AuthService,
-    JwtStrategy
+    JwtStrategy,
+    UserIdValidation
   ],
   exports: [
     AuthService,
-    UserIdValidation
-  ],
-  exports: [
+    UserIdValidation,
     GetUserById,
-    UserIdValidation
   ]
 })
 export class AuthModule {}
