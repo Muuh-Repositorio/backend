@@ -17,7 +17,7 @@ export class SaveCow implements ServiceCommand {
         const cow = await this.saveCowInDatabase.execute(cowDto);
         
         return {
-            idt_cow: cow.idt_farm,
+            idt_cow: cow.idt_cow,
             idt_situation: cow.idt_situation,
             idt_farm: cow.idt_farm,
             idt_type: cow.idt_type,
