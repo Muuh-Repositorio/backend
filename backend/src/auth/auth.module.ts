@@ -6,6 +6,7 @@ import { EmailValidationController, GetUserByIdController, SaveUserController } 
 import { JwtStrategy } from './jwt/jwt.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { LocalStrategy } from './jwt/local.strategy';
+import { UserIdValidation } from './pipes';
 import { UserRepository, SaveUserInDatabase } from './repository/index';
 import { AuthService } from './services/auth.service';
 import { GetUserByCpf } from './services/GetUserByCpf.service';
@@ -42,7 +43,12 @@ require('dotenv').config()
     JwtStrategy
   ],
   exports: [
-    AuthService
+    AuthService,
+    UserIdValidation
+  ],
+  exports: [
+    GetUserById,
+    UserIdValidation
   ]
 })
 export class AuthModule {}

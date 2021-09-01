@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
+import { Farm } from "src/farm/entity/Farm.entity";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from "typeorm";
 
 @Entity()
 export class Users extends BaseEntity {
@@ -19,4 +20,7 @@ export class Users extends BaseEntity {
 
     @Column({ default: false })
     verifed_email: boolean
+
+    @OneToMany(() => Farm, farm => farm.user)
+    farms: Farm[]
 }

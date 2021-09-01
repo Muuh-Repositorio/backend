@@ -43,6 +43,6 @@ export class SaveUser implements ServiceCommand {
             cpf: user.cpf,
             email: user.email,
             name: user.name
-        }
+        } 
     }
 }

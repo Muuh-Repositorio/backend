@@ -14,15 +14,13 @@ export class GetUserById implements ServiceCommand {
     async execute(idt_user: number): Promise<UserResponse> {
         const user = await this.userRepository.findOne({ idt_user: idt_user })
 
-        if(!user) {
-            throw new NotFoundException('Usuário não encontrado!')
-        }
-
-        return {
-            idt_user: user.idt_user,
-            cpf: user.cpf,
-            name: user.name,
-            email: user.email
+        if(user) {
+            return {
+                idt_user: user.idt_user,
+                cpf: user.cpf,
+                name: user.name,
+                email: user.email
+            }
         }
     }
 }
