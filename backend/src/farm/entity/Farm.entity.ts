@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Users } from "src/auth/entity/User.entity";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Farm extends BaseEntity {
@@ -11,5 +12,7 @@ export class Farm extends BaseEntity {
     @Column()
     name: string
 
-    // colocar relação com usuario
+    @ManyToOne(() => Users, user => user.farms)
+    @JoinColumn({ name: 'idt_user' })
+    user: number
 }
