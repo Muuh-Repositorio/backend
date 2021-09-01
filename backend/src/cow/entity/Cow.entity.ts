@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Farm } from "src/farm/entity/Farm.entity";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Cow extends BaseEntity {
@@ -7,9 +8,6 @@ export class Cow extends BaseEntity {
 
     @Column()
     idt_situation: number // Adicionar Relacionamento
-
-    @Column()
-    idt_farm: number // Adicionar Relacionamento
 
     @Column()
     idt_type: number // Adicionar Relacionamento
@@ -25,4 +23,8 @@ export class Cow extends BaseEntity {
 
     @Column()
     birth_date: Date
+
+    @ManyToOne(() => Farm, farm => farm.cows)
+    @JoinColumn({ name: 'idt_farm' })
+    idt_farm: number
 }
