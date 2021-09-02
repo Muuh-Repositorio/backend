@@ -11,6 +11,7 @@ import { UserRepository, SaveUserInDatabase } from './repository/index';
 import { AuthService } from './services/auth.service';
 import { GetUserByCpf } from './services/GetUserByCpf.service';
 import { EmailValidation, GetUserById, HashPassword, SaveUser, SendEmail } from './services/index';
+import { UserCpfValidation } from './pipes/usercpfvalidation.pipe';
 require('dotenv').config()
 
 @Module({
@@ -41,12 +42,15 @@ require('dotenv').config()
     LocalStrategy,
     AuthService,
     JwtStrategy,
-    UserIdValidation
+    UserIdValidation,
+    UserCpfValidation
   ],
   exports: [
     AuthService,
     UserIdValidation,
     GetUserById,
+    UserCpfValidation,
+    GetUserByCpf
   ]
 })
 export class AuthModule {}
