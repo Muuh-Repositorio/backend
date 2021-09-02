@@ -1,3 +1,4 @@
+import { ChildbirthModule } from './childbirth/Childbirth.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './database/typeorm.config';
@@ -10,9 +11,10 @@ import { CowModule } from './cow/cow.module';
     TypeOrmModule.forRoot(typeOrmConfig),
     AuthModule,
     FarmModule,
-    CowModule
+    CowModule,
+    ChildbirthModule
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
