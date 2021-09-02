@@ -1,5 +1,6 @@
+import { Childbirth } from "src/childbirth/entity/childbirth.entity";
 import { Farm } from "src/farm/entity/Farm.entity";
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Cow extends BaseEntity {
@@ -27,4 +28,7 @@ export class Cow extends BaseEntity {
     @ManyToOne(() => Farm, farm => farm.cows)
     @JoinColumn({ name: 'idt_farm' })
     idt_farm: number
+
+    @OneToMany(() => Childbirth, childbirth => childbirth.idt_cow)
+    childbirts: Childbirth[]
 }
