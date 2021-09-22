@@ -1,2 +1,3 @@
 export * from './SaveInsemination.controller'
-export * from './GetInseminationById.controller'
+export * from './GetInseminationByCow.controller'
+export * from './ListInseminations.controller'

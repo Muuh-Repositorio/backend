@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SaveInseminationController, GetInseminationByIdController } from './controllers/index';
+import { SaveInseminationController, GetInseminationByCowController, ListInseminationsController } from './controllers/index';
 import { InseminationRepository, SaveInseminationInDatabase } from './repository/index';
-import { GetInseminationById, SaveInsemination } from './services/index';
+import { GetInseminationByCow, SaveInsemination, ListInseminations } from './services/index';
 
 @Module({
   imports: [
@@ -13,11 +13,13 @@ import { GetInseminationById, SaveInsemination } from './services/index';
   ],
   controllers: [
     SaveInseminationController,
-    GetInseminationByIdController
+    GetInseminationByCowController,
+    ListInseminationsController
   ],
   providers: [
     SaveInsemination,
-    GetInseminationById
+    GetInseminationByCow,
+    ListInseminations
   ]
 })
 export class InseminationModule {}
