@@ -5,14 +5,14 @@ import { InseminationResponse } from "../interfaces/InseminationResponse";
 import { InseminationRepository } from "../repository/InseminationRepository";
 
 @Injectable()
-export class GetInseminationById implements ServiceCommand {
+export class GetInseminationByCow implements ServiceCommand {
     constructor(
         @InjectRepository(InseminationRepository)
         private inseminationRepository: InseminationRepository,
     ) {}
 
-    async execute(idt_insemination: number): Promise<InseminationResponse> {
-        const insemination = await this.inseminationRepository.findOne({ idt_insemination: idt_insemination })
+    async execute(idt_cow: number): Promise<InseminationResponse> {
+        const insemination = await this.inseminationRepository.findOne({ idt_cow: idt_cow })
 
         if(!insemination) {
             throw new NotFoundException('Inseminação não encontrada!')
