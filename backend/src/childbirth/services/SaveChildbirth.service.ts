@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { ChildbirthDto } from "../dto/ChildbirthDto";
-import { Childbirth } from "../entity/childbirth.entity";
+import { ChildbirthResponse } from "../interfaces/ChildbirthResponse";
 import { SaveChildbirthInDatabase } from "../repository/SaveChildbirthInDatabase";
 
 @Injectable()
@@ -12,7 +12,7 @@ export class SaveChildbirth implements ServiceCommand{
         private saveChildbirthInDatabase: SaveChildbirthInDatabase
     ){}
 
-    async execute(childbirthDto: ChildbirthDto): Promise<Childbirth>{
+    async execute(childbirthDto: ChildbirthDto): Promise<ChildbirthResponse>{
         return await this.saveChildbirthInDatabase.execute(childbirthDto)
     }
 }

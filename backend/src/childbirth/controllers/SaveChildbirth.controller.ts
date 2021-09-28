@@ -2,7 +2,7 @@ import { Body, Controller, Post } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ControllerCommand } from "src/Interfaces/ControllerCommand";
 import { ChildbirthDto } from "../dto/ChildbirthDto";
-import { Childbirth } from "../entity/childbirth.entity";
+import { ChildbirthResponse } from "../interfaces/ChildbirthResponse";
 import { SaveChildbirth } from "../services/SaveChildbirth.service";
 
 @ApiTags('Childbirth')
@@ -17,7 +17,7 @@ export class SaveChildbirthController implements ControllerCommand{
     @ApiResponse({ status: 201, description: "Parto cadastrado com sucesso!" })
     @ApiResponse({ status: 409, description: "Alguma informação passada já existe!" })
     @ApiResponse({ status: 500, description: "Erro com o servidor!" })
-    handle(@Body() childbirthDto: ChildbirthDto): Promise<Childbirth>{
+    handle(@Body() childbirthDto: ChildbirthDto): Promise<ChildbirthResponse>{
         return this.saveChildbirth.execute(childbirthDto) 
     }
 }

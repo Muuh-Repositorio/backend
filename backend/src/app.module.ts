@@ -5,6 +5,7 @@ import { typeOrmConfig } from './database/typeorm.config';
 import { AuthModule } from './auth/auth.module';
 import { FarmModule } from './farm/farm.module';
 import { CowModule } from './cow/cow.module';
+import { TypeCowModule } from './type_cow/TypeCow.module';
 import { InseminationModule } from './insemination/insemination.module';
 
 @Module({
@@ -14,6 +15,7 @@ import { InseminationModule } from './insemination/insemination.module';
     FarmModule,
     CowModule,
     ChildbirthModule,
+    TypeCowModule,
     InseminationModule
   ],
   controllers: [],
