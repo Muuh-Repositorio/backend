@@ -13,7 +13,7 @@ export class Childbirth extends BaseEntity{
     @Column()
     childbirth_date: Date
 
-    @ManyToOne(() => Cow, cow => cow.childbirts)
+    @ManyToOne(() => Cow, cow => cow.childbirths)
     @JoinColumn({ name: 'idt_cow' })
     cows: number
 }
