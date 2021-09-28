@@ -15,6 +15,7 @@ async function bootstrap() {
 	.setTitle('Muuh - API')
 	.setDescription('Muuh API documentation')
 	.setVersion('1.0')
+  .addBearerAuth()
 	.build()
 
   const document = SwaggerModule.createDocument(app, config)
