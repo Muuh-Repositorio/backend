@@ -10,7 +10,7 @@ export class SaveCowSituations implements ServiceCommand {
         const situations = await file.execute('src/cow_situations/situations.json')
         
         const database = getManager()
-        database.query('truncate table cow_situations;')
+        database.query('delete from cow_situations;')
         
         for (let i = 0; i < situations.length; i++) {
             const data = database.create(CowSituations)

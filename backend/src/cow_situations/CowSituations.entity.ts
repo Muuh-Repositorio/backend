@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryColumn } from "typeorm";
+import { Cow } from "src/cow/entity/Cow.entity";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class CowSituations extends BaseEntity {
@@ -7,4 +8,7 @@ export class CowSituations extends BaseEntity {
 
     @Column()
     situation: string
+
+    @OneToMany(() => Cow, cow => cow.idt_situation)
+    cows: Cow[]
 }
