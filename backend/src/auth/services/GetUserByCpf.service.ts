@@ -14,10 +14,6 @@ export class GetUserByCpf implements ServiceCommand{
     async execute(userCpf: string): Promise<UserResponse>{
         const user = await this.userRepository.findOne({ cpf: userCpf })
 
-        if(!user){
-            throw new NotFoundException('Usuário não encontrado!')
-        }
-
         return {
             idt_user: user.idt_user,
             name: user.name,
