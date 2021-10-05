@@ -1,5 +1,4 @@
 import { Childbirth } from "src/childbirth/entity/childbirth.entity";
-import { CowSituations } from "src/cow_situations/CowSituations.entity";
 import { Farm } from "src/farm/entity/Farm.entity";
 import { Insemination } from "src/insemination/entity/Insemination.entity";
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
@@ -8,6 +7,9 @@ import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGe
 export class Cow extends BaseEntity {
     @PrimaryGeneratedColumn()
     idt_cow: number
+
+    @Column()
+    idt_situation: number // Adicionar Relacionamento
 
     @Column()
     idt_type: number // Adicionar Relacionamento
@@ -21,12 +23,8 @@ export class Cow extends BaseEntity {
     @Column()
     weight: number
 
-    @Column({ type: 'date'})
-    birth_date: string
-
-    @ManyToOne(() => CowSituations, cowSituation => cowSituation.cows)
-    @JoinColumn({ name: 'idt_situation' })
-    idt_situation: number
+    @Column()
+    birth_date: Date
 
     @ManyToOne(() => Farm, farm => farm.cows)
     @JoinColumn({ name: 'idt_farm' })

@@ -15,13 +15,14 @@ export class AuthService{
         private jwtService: JwtService
     ){}
 
-    async validateUser(userCpf: string, userPassword: string) {
+    async validateUser(userCpf: string, userPassword: string){
         const user = await this.userRepository.findOne({ cpf: userCpf })
 
-        if(user && user.cpf === userCpf && await compare(userPassword, user.password) ){
+        if(user && user.cpf === userCpf && compare(userPassword, user.password) ){
             const { idt_user, name, email, cpf } = user
 
             return { idt_user, name, email, cpf }
+            
         }
 
         return null

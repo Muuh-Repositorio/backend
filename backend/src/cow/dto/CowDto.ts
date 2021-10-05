@@ -29,5 +29,5 @@ export class CowDto {
 
     @ApiProperty()
     @IsNotEmpty({ message: "Data de nascimento não informada!" })
-    birth_date: string
+    birth_date: Date
 }
