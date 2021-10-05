@@ -6,5 +6,5 @@ export interface CowResponse {
     code: string,
     name: string,
     weight: number,
-    birth_date: Date
+    birth_date: string
 }

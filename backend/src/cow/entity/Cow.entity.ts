@@ -21,8 +21,8 @@ export class Cow extends BaseEntity {
     @Column()
     weight: number
 
-    @Column()
-    birth_date: Date
+    @Column({ type: 'date'})
+    birth_date: string
 
     @ManyToOne(() => CowSituations, cowSituation => cowSituation.cows)
     @JoinColumn({ name: 'idt_situation' })

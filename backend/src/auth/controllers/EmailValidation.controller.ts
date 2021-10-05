@@ -6,8 +6,8 @@ import { EmailValidation } from "../services";
 
 @ApiTags('User')
 @Controller('/api/user/:idt_user/email_validation')
-@UseGuards(AuthGuard('jwt'))
-@ApiBearerAuth()
+// @UseGuards(AuthGuard('jwt'))
+// @ApiBearerAuth()
 export class EmailValidationController implements ControllerCommand {
     
     constructor(private emailValidation: EmailValidation) {}
