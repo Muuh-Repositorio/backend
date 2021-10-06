@@ -16,6 +16,3 @@ export class DryingDate implements CalculatorCommand{
     }
 
 }
-
-const teste = new DryingDate()
-console.log(teste.calculate("23/09/2021"))

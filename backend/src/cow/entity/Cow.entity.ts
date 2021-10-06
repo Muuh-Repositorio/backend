@@ -24,10 +24,12 @@ export class Cow extends BaseEntity {
     @Column({ type: 'date'})
     birth_date: string
 
+    @Column()
     @ManyToOne(() => CowSituations, cowSituation => cowSituation.cows)
     @JoinColumn({ name: 'idt_situation' })
     idt_situation: number
 
+    @Column()
     @ManyToOne(() => Farm, farm => farm.cows)
     @JoinColumn({ name: 'idt_farm' })
     idt_farm: number

@@ -10,9 +10,9 @@ export class SaveCowSituations implements ServiceCommand {
         const situations = await file.execute('src/cow_situations/situations.json')
         
         const database = getManager()
-        const exist = database.query('select * from cow_situations;')
+        const count = await database.query('select count(*) from cow_situations;')
         
-        if (!exist) {
+        if (count > 0) {
             for (let i = 0; i < situations.length; i++) {
                 const data = database.create(CowSituations)
                 data.idt_situation = situations[i]['idt']

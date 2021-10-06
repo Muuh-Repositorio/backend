@@ -28,7 +28,6 @@ export class SaveCowInDatabase extends Repository<Cow>  {
             if (error.code === '23505') {
                 throw new ConflictException('Vaca já existe!')
             } else {
-                console.log(error)
                 throw new InternalServerErrorException('Erro no servidor!')
             }
         }

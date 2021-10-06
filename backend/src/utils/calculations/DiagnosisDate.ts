@@ -1,17 +1,15 @@
+import * as moment from 'moment';
 import { CalculatorCommand } from "src/Interfaces/CalculatorCommand";
-import { CalculatedDate } from "./CalculatedDate.interface";
 
 export class DiagnosisDate implements CalculatorCommand {
     calculate(inseminationDate: string): string {
-        const calculatedDate: CalculatedDate = {
-            day: Number(inseminationDate.split('/')[0]) + 40,
-            month: Number(inseminationDate.split('/')[1]) - 1,
-            year: Number(inseminationDate.split('/')[2])
-        }
+        const americanDate = moment(inseminationDate, "YYYY MM DD").toString() //TRANSFORMA NOSSO ESTILO DE DATA EM AMERICANO (MM/DD/YYYY)
+        const milisecInseminationDate = Date.parse(americanDate) //TRANSFORMA A DATA AMERICANA EM MILISSEGUNDOS
+        const milisec40days = 3456000000 //40 DIAS EM MILISSEGUNDOS
+        const milisecDiagnosisDate = milisecInseminationDate + milisec40days //SOMA A DATA DE DIAGNÓSTICO COM OS 40 DIAS (EM MILISSEGUNDOS)
+        const diagnosisDate = new Date(milisecDiagnosisDate).toLocaleDateString() //DATA NO FORMATO BRASILEIRO
 
-        const date: Date = new Date(calculatedDate.year, calculatedDate.month, calculatedDate.day)
-
-        return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+        return diagnosisDate
     }
 }
 

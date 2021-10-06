@@ -9,5 +9,5 @@ export class InseminationDto {
 
     @ApiProperty()
     @IsNotEmpty({ message: "Data de inseminação não informado!" })
-    insemination_date: Date
+    insemination_date: string
 }

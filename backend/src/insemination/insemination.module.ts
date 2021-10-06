@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CowModule } from 'src/cow/cow.module';
 import { SaveInseminationController, GetInseminationByCowController, ListInseminationsController } from './controllers/index';
 import { InseminationRepository, SaveInseminationInDatabase } from './repository/index';
 import { GetInseminationByCow, SaveInsemination, ListInseminations } from './services/index';
@@ -20,6 +21,9 @@ import { GetInseminationByCow, SaveInsemination, ListInseminations } from './ser
     SaveInsemination,
     GetInseminationByCow,
     ListInseminations
+  ],
+  exports: [
+    GetInseminationByCow
   ]
 })
 export class InseminationModule {}
