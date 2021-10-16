@@ -1,5 +1,5 @@
 export * from './GetUserById.service'
 export * from './SaveUser.service'
 export * from './HashPassword.service'
-export * from '../../utils/services/email/SendEmail.service'
+export * from './SendEmail.service'
 export * from './EmailValidation.service'

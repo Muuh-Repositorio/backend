@@ -1,7 +1,7 @@
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { createTestAccount, createTransport, getTestMessageUrl } from 'nodemailer'
-import { EmailConfiguration, EmailInfo } from "../../../Interfaces/EmailConfiguration";
-import { Email } from "./Email";
+import { EmailConfiguration, EmailInfo } from "../interfaces/EmailConfiguration";
+import { Email } from "../entity/Email";
 require('dotenv').config()
 
 export class SendEmail implements ServiceCommand {

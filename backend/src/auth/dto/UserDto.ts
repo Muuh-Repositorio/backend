@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { Equals, IsEmail, IsNotEmpty, MaxLength, MinLength } from "class-validator"
+import { IsEmail, IsNotEmpty } from "class-validator"
 
 export class UserDto {
 
@@ -14,15 +14,9 @@ export class UserDto {
 
     @ApiProperty()
     @IsNotEmpty({ message: "CPF não informado!" })
-    @MinLength(11, { message: 'O número de CPF precisa ter 11 dígitos!'})
-    @MaxLength(11, { message: 'O número de CPF precisa ter 11 dígitos!'})
     cpf: string
 
     @ApiProperty()
     @IsNotEmpty({ message: "Senha não informada!" })
     password: string
-
-    @ApiProperty()
-    @IsNotEmpty({ message: "Confirmação de senha não informada! "})
-    confirmPassword: string
 }

@@ -1,5 +1,5 @@
-import { EmailInfo } from "../../../Interfaces/EmailConfiguration"
-import { EmailBuilder } from "./EmailBuilder"
+import { EmailInfo } from "../interfaces/EmailConfiguration"
+import { EmailBuilder } from "../services/EmailBuilder"
 
 export class Email {
     private from!: string

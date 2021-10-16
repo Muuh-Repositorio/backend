@@ -1,4 +1,4 @@
-import { Email } from "./Email"
+import { Email } from "../entity/Email"
 
 export class EmailBuilder {
     private _from: string

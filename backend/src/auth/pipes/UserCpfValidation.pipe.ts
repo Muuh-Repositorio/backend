@@ -9,12 +9,6 @@ export class UserCpfValidation implements PipeTransform {
   }
   
   async transform(value: any): Promise<any> {
-    if (value.cpf) {
-      value.cpf = String(value.cpf)
-    } else {
-      value = String(value)
-    }
-    
     const cpf_exist = await this.getUserByCpf.execute(value.cpf || value)
 
     if(!cpf_exist){

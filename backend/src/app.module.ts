@@ -7,7 +7,6 @@ import { FarmModule } from './farm/farm.module';
 import { CowModule } from './cow/cow.module';
 import { TypeCowModule } from './type_cow/TypeCow.module';
 import { InseminationModule } from './insemination/insemination.module';
-import { CowSituationsModule } from './cow_situations/cow_situtations.module';
 
 @Module({
   imports: [
@@ -17,8 +16,7 @@ import { CowSituationsModule } from './cow_situations/cow_situtations.module';
     CowModule,
     ChildbirthModule,
     TypeCowModule,
-    InseminationModule,
-    CowSituationsModule
+    InseminationModule
   ],
   controllers: [],
   providers: [],
