@@ -11,6 +11,6 @@ export class Insemination extends BaseEntity {
     @JoinColumn({ name: 'idt_cow' })
     idt_cow: number
 
-    @Column()
-    insemination_date: Date
+    @Column({ type: 'date' })
+    insemination_date: string
 }

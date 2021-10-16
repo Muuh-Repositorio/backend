@@ -1,23 +1,36 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SaveCowController, GetCowByIdController } from './controllers/index';
+import { InseminationModule } from 'src/insemination/insemination.module';
+import { DiagnosisDate } from 'src/utils/calculations/DiagnosisDate';
+import { DryingDate } from 'src/utils/calculations/DryingDate';
+import { SaveCowController, GetCowByIdController, GetCowsForDiagnosisController, GetCowsBySituationController } from './controllers/index';
 import { CowRepository, SaveCowInDatabase } from './repository/index';
-import { GetCowById, SaveCow } from './services/index';
+import { GetCowById, SaveCow, GetCowsBySituation, GetCowsForDiagnosis } from './services/index';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([
       CowRepository,
       SaveCowInDatabase
-    ])
+    ]),
+    InseminationModule
   ],
   controllers: [
     SaveCowController,
-    GetCowByIdController
+    GetCowByIdController,
+    GetCowsBySituationController,
+    GetCowsForDiagnosisController
   ],
   providers: [
     SaveCow,
-    GetCowById
+    GetCowById,
+    GetCowsBySituation,
+    GetCowsForDiagnosis,
+    DiagnosisDate,
+    DryingDate
+  ],
+  exports: [
+    GetCowsBySituation
   ]
 })
 export class CowModule {}
