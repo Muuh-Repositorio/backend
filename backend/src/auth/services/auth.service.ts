@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { GetUserByCpf } from "./GetUserByCpf.service";
 import { compare } from 'bcrypt'
@@ -22,9 +22,9 @@ export class AuthService{
             const { idt_user, name, email, cpf } = user
 
             return { idt_user, name, email, cpf }
+        } else {
+            throw new BadRequestException('CPF ou senha incorretos!')
         }
-
-        return null
     }
 
     async login(authDto: AuthDto){
