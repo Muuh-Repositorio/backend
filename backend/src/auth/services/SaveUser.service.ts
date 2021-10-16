@@ -1,14 +1,13 @@
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { UserDto } from "../dto/UserDto";
-import { Email } from "../entity/Email";
-import { Users } from "../entity/User.entity";
+import { Email } from "../../utils/services/email/Email";
 import { UserResponse } from "../interfaces/UserResponse";
 import { SaveUserInDatabase } from "../repository/SaveUserInDatabase";
-import { EmailBuilder } from "./EmailBuilder";
+import { EmailBuilder } from "../../utils/services/email/EmailBuilder";
 import { HashPassword } from "./HashPassword.service";
-import { SendEmail } from "./SendEmail.service";
+import { SendEmail } from "../../utils/services/email/SendEmail.service";
 
 @Injectable()
 export class SaveUser implements ServiceCommand {
@@ -21,6 +20,10 @@ export class SaveUser implements ServiceCommand {
     ) {}
 
     async execute(userDto: UserDto): Promise<UserResponse> {
+        if (userDto.password !== userDto.confirmPassword) {
+            throw new BadRequestException('Senhas não conferem!')
+        }
+
         const hashedPassword = await this.hashPassword.execute(userDto.password)
         userDto.password = hashedPassword
 
