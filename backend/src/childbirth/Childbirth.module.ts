@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from 'src/auth/auth.module';
+import { GetBirthsByFarmController } from './controllers/GetBirthsByFarm.controller';
 import { SaveChildbirthController } from './controllers/SaveChildbirth.controller';
 import { ChildbirthRepository } from './repository/ChildbirthRepository';
 import { SaveChildbirthInDatabase } from './repository/SaveChildbirthInDatabase';
+import { GetBirthsByFarm } from './services/GetBirthsByFarm.service';
 import { SaveChildbirth } from './services/SaveChildbirth.service';
 
 @Module({
@@ -15,10 +17,12 @@ import { SaveChildbirth } from './services/SaveChildbirth.service';
         AuthModule
     ],
     controllers: [
-        SaveChildbirthController
+        SaveChildbirthController,
+        GetBirthsByFarmController
     ],
     providers: [
-        SaveChildbirth
+        SaveChildbirth,
+        GetBirthsByFarm
     ],
 })
 export class ChildbirthModule { }

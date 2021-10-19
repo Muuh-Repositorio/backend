@@ -10,6 +10,6 @@ export class ChildbirthDto{
 
     @ApiProperty()
     @IsNotEmpty({ message: 'Data do parto não informada! '})
-    childbirth_date: Date
+    childbirth_date: string
 
 }

@@ -3,9 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { InseminationModule } from 'src/insemination/insemination.module';
 import { DiagnosisDate } from 'src/utils/calculations/DiagnosisDate';
 import { DryingDate } from 'src/utils/calculations/DryingDate';
+import { GetCowsByFarmController } from './controllers/GetCowsByFarm.controller';
 import { GetCowsForDryingController } from './controllers/GetCowsForDrying.controller';
 import { SaveCowController, GetCowByIdController, GetCowsForDiagnosisController, GetCowsBySituationController } from './controllers/index';
 import { CowRepository, SaveCowInDatabase } from './repository/index';
+import { GetCowsByFarm } from './services/GetCowsByFarm.service';
 import { GetCowsForDrying } from './services/GetCowsForDrying.service';
 import { GetCowById, SaveCow, GetCowsBySituation, GetCowsForDiagnosis } from './services/index';
 
@@ -22,7 +24,8 @@ import { GetCowById, SaveCow, GetCowsBySituation, GetCowsForDiagnosis } from './
     GetCowByIdController,
     GetCowsBySituationController,
     GetCowsForDiagnosisController,
-    GetCowsForDryingController
+    GetCowsForDryingController,
+    GetCowsByFarmController
   ],
   providers: [
     SaveCow,
@@ -31,7 +34,8 @@ import { GetCowById, SaveCow, GetCowsBySituation, GetCowsForDiagnosis } from './
     GetCowsForDiagnosis,
     GetCowsForDrying,
     DiagnosisDate,
-    DryingDate
+    DryingDate,
+    GetCowsByFarm
   ],
   exports: [
     GetCowsBySituation,
