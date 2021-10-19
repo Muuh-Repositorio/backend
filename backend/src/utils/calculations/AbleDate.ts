@@ -1,5 +1,5 @@
 import { CalculatorCommand } from "src/Interfaces/CalculatorCommand";
-import moment from "moment";
+import * as moment from "moment";
 // Criar cálculo de Aptidão (Data Apta = Data do Parto + 60 dias )
 
 export class AbleDate implements CalculatorCommand{
