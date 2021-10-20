@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Situations } from "src/cow_situations/Situations.enum";
 import { GetInseminationByCow } from "src/insemination/services";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
+import { BRtoUS } from "src/utils/calculations/BRtoUS";
 import { DryingDate } from "src/utils/calculations/DryingDate";
 import { GetCowsBySituation } from "./GetCowsBySituation.service";
 
@@ -11,6 +12,7 @@ export class GetCowsForDrying implements ServiceCommand {
         private getCowsBySituations: GetCowsBySituation,
         private dryingDate: DryingDate,
         private getInseminationByCow: GetInseminationByCow,
+        private BRtoUS: BRtoUS
     ){}
 
     async execute(idt_farm: number): Promise<any[]>{
@@ -21,7 +23,7 @@ export class GetCowsForDrying implements ServiceCommand {
             const insemination_date = (await this.getInseminationByCow.execute(cow.idt_cow)).insemination_date //DATA DE INSEMINAÇÃO DA VACA  
             const today = Date.now() //DATA DO DIA CORRENTE EM MILISSEGUNDOS
             const drying_date = this.dryingDate.calculate(insemination_date)  
-            const drying_date_US = this.dryingDate.BRtoUS(drying_date)
+            const drying_date_US = this.BRtoUS.calculate(drying_date)
             const drying_date_millisec = new Date(drying_date_US).getMilliseconds()
 
             if(today >= drying_date_millisec){
