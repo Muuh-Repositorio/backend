@@ -4,12 +4,19 @@ import { InseminationModule } from 'src/insemination/insemination.module';
 import { DiagnosisDate } from 'src/utils/calculations/DiagnosisDate';
 import { DryingDate } from 'src/utils/calculations/DryingDate';
 import { GetCowsByFarmController } from './controllers/GetCowsByFarm.controller';
+import { GetCowsByFarm } from './services/GetCowsByFarm.service';
+import { GetCowsForInseminationController } from './controllers/GetCowsForInsemination.controller';
 import { GetCowsForDryingController } from './controllers/GetCowsForDrying.controller';
 import { SaveCowController, GetCowByIdController, GetCowsForDiagnosisController, GetCowsBySituationController } from './controllers/index';
 import { CowRepository, SaveCowInDatabase } from './repository/index';
-import { GetCowsByFarm } from './services/GetCowsByFarm.service';
+import { GetCowsForInsemination } from './services/GetCowsForInsemination';
 import { GetCowsForDrying } from './services/GetCowsForDrying.service';
 import { GetCowById, SaveCow, GetCowsBySituation, GetCowsForDiagnosis } from './services/index';
+import { GetAbleCowsAfterChildbirth } from './services/GetAbleCowsAfterChildbirth';
+import { GetAbleCowsAfterChildbirthController } from './controllers/GetAbleCows.controller';
+import { ChildbirthModule } from 'src/childbirth/Childbirth.module';
+import { AbleDate } from 'src/utils/calculations/AbleDate';
+import { BRtoUS } from 'src/utils/calculations/BRtoUS';
 
 @Module({
   imports: [
@@ -17,7 +24,8 @@ import { GetCowById, SaveCow, GetCowsBySituation, GetCowsForDiagnosis } from './
       CowRepository,
       SaveCowInDatabase
     ]),
-    InseminationModule
+    InseminationModule,
+    ChildbirthModule
   ],
   controllers: [
     SaveCowController,
@@ -25,7 +33,9 @@ import { GetCowById, SaveCow, GetCowsBySituation, GetCowsForDiagnosis } from './
     GetCowsBySituationController,
     GetCowsForDiagnosisController,
     GetCowsForDryingController,
-    GetCowsByFarmController
+    GetCowsByFarmController,
+    GetCowsForInseminationController,
+    GetAbleCowsAfterChildbirthController
   ],
   providers: [
     SaveCow,
@@ -33,6 +43,10 @@ import { GetCowById, SaveCow, GetCowsBySituation, GetCowsForDiagnosis } from './
     GetCowsBySituation,
     GetCowsForDiagnosis,
     GetCowsForDrying,
+    GetCowsForInsemination,
+    GetAbleCowsAfterChildbirth,
+    AbleDate,
+    BRtoUS,
     DiagnosisDate,
     DryingDate,
     GetCowsByFarm
