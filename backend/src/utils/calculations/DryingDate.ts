@@ -15,10 +15,4 @@ export class DryingDate implements CalculatorCommand{
 
     }
 
-    BRtoUS(drying_date: string): string {
-        const americanDate = moment(drying_date, "YYYY MM DD").toString()
-
-        return americanDate;
-    }
-
 }
