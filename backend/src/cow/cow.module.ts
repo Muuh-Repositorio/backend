@@ -13,7 +13,7 @@ import { GetCowsForInsemination } from './services/GetCowsForInsemination';
 import { GetCowsForDrying } from './services/GetCowsForDrying.service';
 import { GetCowById, SaveCow, GetCowsBySituation, GetCowsForDiagnosis } from './services/index';
 import { GetAbleCowsAfterChildbirth } from './services/GetAbleCowsAfterChildbirth';
-import { GetAbleCowsAfterChildbirthController } from './controllers/GetAbleCows.controller';
+import { GetAbleCowsAfterChildbirthController } from './controllers/GetAbleCowsAfterChildbirth.controller';
 import { ChildbirthModule } from 'src/childbirth/Childbirth.module';
 import { AbleDate } from 'src/utils/calculations/AbleDate';
 import { BRtoUS } from 'src/utils/calculations/BRtoUS';
