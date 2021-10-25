@@ -16,6 +16,9 @@ export class Users extends BaseEntity {
     cpf: string
 
     @Column()
+    phone: string
+
+    @Column()
     password: string
 
     @Column({ default: false })

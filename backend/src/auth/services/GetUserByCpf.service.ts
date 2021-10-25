@@ -13,7 +13,7 @@ export class GetUserByCpf implements ServiceCommand{
 
     async execute(userCpf: string): Promise<UserResponse>{
         const user = await this.userRepository.findOne({ cpf: userCpf })
-
+ 
         if (!user) {
             throw new NotFoundException('Usuário não encontrado!') 
         }
@@ -22,6 +22,7 @@ export class GetUserByCpf implements ServiceCommand{
             idt_user: user.idt_user,
             name: user.name,
             email: user.email,
+            phone: user.phone,
             cpf:user.cpf
         }
     }

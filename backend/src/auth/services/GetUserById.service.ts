@@ -19,7 +19,8 @@ export class GetUserById implements ServiceCommand {
                 idt_user: user.idt_user,
                 cpf: user.cpf,
                 name: user.name,
-                email: user.email
+                email: user.email,
+                phone: user.phone
             }
         }
     }
