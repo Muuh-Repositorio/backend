@@ -2,7 +2,10 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { ChildbirthRepository } from './childbirth/repository/ChildbirthRepository';
+import { GetChildbirthByDate } from './childbirth/services/GetChildbirthByDate.service';
 import { SaveCowSituations } from './cow_situations/SaveCowSituations.service';
+import { Notification } from './utils/mimosa/ChildbirthNotification.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
