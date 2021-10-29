@@ -18,6 +18,7 @@ export class SaveFarmInDatabase extends Repository<Farm> implements ServiceComma
 
         try {
             await farm.save()
+
             return farm
         } catch (error) {
             if (error.code === '23505') {

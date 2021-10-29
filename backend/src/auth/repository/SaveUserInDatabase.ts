@@ -9,13 +9,14 @@ import { Users } from "../entity/User.entity";
 export class SaveUserInDatabase extends Repository<Users> implements ServiceCommand {
 
     async execute(userDto: UserDto): Promise<Users> {
-        const { name, cpf, email, password, confirmPassword } = userDto
+        const { name, cpf, email, password, confirmPassword, phone } = userDto
 
         const user = this.create()
 
         user.name = name
         user.email = email
         user.cpf = cpf
+        user.phone = phone
         user.password = password
 
         try {
