@@ -8,7 +8,7 @@ export class Farm extends BaseEntity {
     idt_farm: number
 
     @Column({ unique: true })
-    cnpj: string
+    sei: string
 
     @Column()
     name: string
