@@ -1,15 +1,21 @@
-// import * as venom from 'venom-bot'
-// import { ChildbirthNotification } from './ChildbirthNotification.service'
+import * as venom from 'venom-bot'
+import { Notification } from './Notification.service'
 
-// export async function Chatbot(){
+export class Chatbot{
 
-//     return await venom
-//         .create('muuuhChatbot')
-//         .then((client) => this.ChildbirthNotification.execute(client))
-//         .catch((erro) => {
-//             console.log(erro)
-//         })
-    
-// }
+    constructor(
+        private notification: Notification
+    ){}
+
+    async execute(){
+        return await venom
+            .create('muuuhChatbot')
+            .then((client) => this.notification.main(client))
+            .catch((erro) => {
+                console.log(erro)
+            })
+    }
+
+}
 
 
