@@ -3,8 +3,8 @@ import * as moment from "moment";
 
 export class BRtoUS implements CalculatorCommand{
     calculate(BRdate: string): string{
-            const americanDate = moment(BRdate, "YYYY MM DD").toString()
-    
+            const americanDate = moment(BRdate, 'YYYY MM DD').toString()
+
             return americanDate;
     }
 }
