@@ -45,6 +45,7 @@ export class SaveUser implements ServiceCommand {
             idt_user: user.idt_user,
             cpf: user.cpf,
             email: user.email,
+            phone: user.phone,
             name: user.name
         } 
     }

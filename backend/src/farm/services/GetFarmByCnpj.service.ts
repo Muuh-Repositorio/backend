@@ -11,7 +11,7 @@ export class GetFarmByCnpj implements ServiceCommand {
         private farmRepository: FarmRepository
     ) {}
 
-    async execute(cnpj: string): Promise<Farm> {
-        return await this.farmRepository.findOne({ cnpj: cnpj })
+    async execute(sei: string): Promise<Farm> {
+        return await this.farmRepository.findOne({ sei: sei })
     }
 }

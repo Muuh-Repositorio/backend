@@ -8,8 +8,8 @@ export class FarmDto {
     idt_user: number
 
     @ApiProperty()
-    @IsNotEmpty({ message: "CNPJ não informado!" })
-    cnpj: string
+    @IsNotEmpty({ message: "SEI não informado!" })
+    sei: string
 
     @ApiProperty()
     @IsOptional()

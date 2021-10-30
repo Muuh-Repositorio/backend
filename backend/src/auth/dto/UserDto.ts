@@ -19,6 +19,10 @@ export class UserDto {
     cpf: string
 
     @ApiProperty()
+    @IsNotEmpty({ message: "Telefone não informado!" })
+    phone: string
+
+    @ApiProperty()
     @IsNotEmpty({ message: "Senha não informada!" })
     password: string
 
