@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from 'src/auth/auth.module';
-import { SaveTypeCowController } from './controllers/SaveTypeCow';
+import { SaveTypeCowController } from './controllers/SaveTypeCow.controller';
+import { GetCowTypesController } from './controllers/GetCowTypes.controller';
 import { SaveTypeCowInDatabase } from './repository/SaveTypeCowInDatabase';
 import { TypeCowRepository } from './repository/TypeCowRepository';
+import { GetCowTypes } from './services/GetCowTypes.service';
 import { SaveTypeCow } from './services/SaveTypeCow.service';
 
 
@@ -16,10 +18,12 @@ import { SaveTypeCow } from './services/SaveTypeCow.service';
         AuthModule
     ],
     controllers: [
-        SaveTypeCowController
+        SaveTypeCowController,
+        GetCowTypesController
     ],
     providers: [
-        SaveTypeCow
+        SaveTypeCow,
+        GetCowTypes
     ],
 })
 export class TypeCowModule { }

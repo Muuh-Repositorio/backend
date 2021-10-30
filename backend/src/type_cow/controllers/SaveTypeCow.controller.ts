@@ -5,8 +5,8 @@ import { TypeCowDto } from "../dto/TypeCowDto";
 import { TypeCowResponse } from "../interfaces/TypeCowResponse";
 import { SaveTypeCow } from "../services/SaveTypeCow.service";
 
-@ApiTags('Type of Cow')
-@Controller('api/type_cow')
+@ApiTags('Cow')
+@Controller('api/cow/type_cow')
 export class SaveTypeCowController implements ControllerCommand{
     constructor(
         private saveTypeCow: SaveTypeCow
