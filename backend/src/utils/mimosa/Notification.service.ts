@@ -11,10 +11,10 @@ export class Notification{
     manager = getManager()
     
     async main(client: any){
-        await this.childbirth(client)
-        await this.drying(client)
-        await this.diagnosis(client)
-        await this.ableAfterChildbirth(client)
+        // await this.childbirth(client)
+        // await this.drying(client)
+        // await this.diagnosis(client)
+        // await this.ableAfterChildbirth(client)
     }
 
     async childbirth(client: any){
