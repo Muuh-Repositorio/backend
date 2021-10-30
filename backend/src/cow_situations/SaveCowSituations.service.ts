@@ -6,8 +6,8 @@ import { CowSituations } from "./CowSituations.entity";
 export class SaveCowSituations implements ServiceCommand {
 
     async execute(): Promise<void> {
-        const file = new ReadJson()
-        const situations = await file.execute('src/cow_situations/situations.json')
+        const readJson = new ReadJson()
+        const situations = await readJson.execute('src/cow_situations/situations.json')
         
         const database = getManager()
         const count = await database.query('select count(*) from cow_situations;')
