@@ -25,10 +25,10 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document)
 
   const saveCowSituations = new SaveCowSituations()
-  saveCowSituations.execute()
+  await saveCowSituations.execute()
 
-  const initChatbot = new Chatbot(new Notification())
-  initChatbot.execute()
+  // const initChatbot = new Chatbot(new Notification())
+  // initChatbot.execute()
   
   await app.listen(3000);
 }

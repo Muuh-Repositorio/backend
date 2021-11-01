@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Cow } from "src/cow/entity/Cow.entity";
 import { GetCowsBySituation } from "src/cow/services";
-import { Situations } from "src/cow_situations/Situations.enum";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { DiagnosisDate } from "src/utils/calculations/DiagnosisDate";
 import { GetInseminationByCow } from "../../insemination/services";
@@ -18,7 +17,7 @@ export class GetCowsForDiagnosis implements ServiceCommand {
 
     async execute(idt_farm: number): Promise<any[]> {
         const cows = []
-        const inseminatedCows = await this.getCowsBySituations.execute(idt_farm, Situations.INSEMINADA)
+        const inseminatedCows = await this.getCowsBySituations.execute(idt_farm, Situations.getID(Situations.INSEMINATED))
         
         const today = new Date().toLocaleDateString()
         for (const cow of inseminatedCows) {

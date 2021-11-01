@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common";
 import { GetChildbirthByCow } from "src/childbirth/services/GetChildbirthByCow.service";
-import { Situations } from "src/cow_situations/Situations.enum";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { AbleDate } from "src/utils/calculations/AbleDate";
 import { BRtoUS } from "src/utils/calculations/BRtoUS";
@@ -21,7 +20,7 @@ export class GetAbleCowsAfterChildbirth implements ServiceCommand{
 
     async execute(idt_farm: number): Promise<any[]>{
         const cows = []
-        const birth = await this.getCowsBySituations.execute(idt_farm, Situations.PARIDA)
+        const birth = await this.getCowsBySituations.execute(idt_farm, Situations.getID(Situations.BIRTH))
         
         for(const cow of birth){
             const childbirth_date = (await this.getChildbirthByCow.execute(cow.idt_cow)).childbirth_date

@@ -1,5 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import { Situations } from "src/cow_situations/Situations.enum";
 import { GetInseminationByCow } from "src/insemination/services";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { BRtoUS } from "src/utils/calculations/BRtoUS";
@@ -17,7 +16,7 @@ export class GetCowsForDrying implements ServiceCommand {
 
     async execute(idt_farm: number): Promise<any[]>{
         const cows = []
-        const pregnantCows = await this.getCowsBySituations.execute(idt_farm, Situations.EMPRENHADA) //TODAS AS VACAS PRENHAS
+        const pregnantCows = await this.getCowsBySituations.execute(idt_farm, Situations.getID(Situations.PREGNANT)) //TODAS AS VACAS PRENHAS
         
         for(const cow of pregnantCows){
             const insemination_date = (await this.getInseminationByCow.execute(cow.idt_cow)).insemination_date //DATA DE INSEMINAÇÃO DA VACA  

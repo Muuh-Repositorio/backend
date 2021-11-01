@@ -1,5 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import { Situations } from "src/cow_situations/Situations.enum";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { AbleDate } from "src/utils/calculations/AbleDate";
 import { GetCowById } from "./GetCowById.service";
@@ -14,7 +13,7 @@ export class GetCowsForInsemination implements ServiceCommand{
 
     async execute(idt_farm: number): Promise<any[]>{
         const cows = []
-        const ableCows = await this.getAbleCows.execute(idt_farm, Situations.APTA)
+        const ableCows = await this.getAbleCows.execute(idt_farm, Situations.getID(Situations.ABLE))
         
         for(const cow of ableCows){
             const weight = (await this.getCowsByID.execute(cow.idt_cow)).weight
