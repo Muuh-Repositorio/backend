@@ -13,4 +13,7 @@ export class Insemination extends BaseEntity {
 
     @Column({ type: 'date' })
     insemination_date: string
+
+    @Column()
+    diagnosis: boolean
 }

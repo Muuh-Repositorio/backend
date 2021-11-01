@@ -7,6 +7,7 @@ import { SaveTypeCowInDatabase } from './repository/SaveTypeCowInDatabase';
 import { TypeCowRepository } from './repository/TypeCowRepository';
 import { GetCowTypes } from './services/GetCowTypes.service';
 import { SaveTypeCow } from './services/SaveTypeCow.service';
+import { CowModule } from 'src/cow/cow.module';
 
 
 @Module({
@@ -15,7 +16,8 @@ import { SaveTypeCow } from './services/SaveTypeCow.service';
             SaveTypeCowInDatabase,
             TypeCowRepository
         ]),
-        AuthModule
+        AuthModule,
+        CowModule
     ],
     controllers: [
         SaveTypeCowController,

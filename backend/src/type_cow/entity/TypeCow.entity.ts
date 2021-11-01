@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Cow } from "src/cow/entity/Cow.entity";
+import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class TypeCow extends BaseEntity{
@@ -9,4 +10,6 @@ export class TypeCow extends BaseEntity{
     @Column()
     type: string
 
+    @OneToMany(() => Cow, cow => cow.idt_type)
+    cows: Cow[]
 }

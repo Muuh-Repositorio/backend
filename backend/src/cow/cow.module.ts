@@ -17,6 +17,7 @@ import { GetAbleCowsAfterChildbirthController } from './controllers/GetAbleCowsA
 import { ChildbirthModule } from 'src/childbirth/Childbirth.module';
 import { AbleDate } from 'src/utils/calculations/AbleDate';
 import { BRtoUS } from 'src/utils/calculations/BRtoUS';
+import { CowSituationsModule } from 'src/cow_situations/cow_situtations.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { BRtoUS } from 'src/utils/calculations/BRtoUS';
       SaveCowInDatabase
     ]),
     InseminationModule,
-    ChildbirthModule
+    ChildbirthModule,
+    CowSituationsModule
   ],
   controllers: [
     SaveCowController,

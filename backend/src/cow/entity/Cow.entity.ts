@@ -9,9 +9,6 @@ export class Cow extends BaseEntity {
     @PrimaryGeneratedColumn()
     idt_cow: number
 
-    @Column()
-    idt_type: number // Adicionar Relacionamento
-
     @Column({unique: true})
     code: string
 
@@ -39,4 +36,9 @@ export class Cow extends BaseEntity {
 
     @OneToMany(() => Insemination, insemination => insemination.idt_cow)
     inseminations: Insemination[]
+    
+    @Column()
+    @ManyToOne(() => CowSituations, cowSitutations => cowSitutations.cows)
+    @JoinColumn({ name: "idt_type" })
+    idt_type: number
 }
