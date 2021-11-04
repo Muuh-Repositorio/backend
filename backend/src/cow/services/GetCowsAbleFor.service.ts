@@ -12,7 +12,7 @@ export class GetCowsAbleFor implements ServiceCommand {
 
         let query = ''
         if (idt_farm === 0) {
-            query = await readSQL.execute(file, ["and idt_farm = idFarm", "days_"], ['', days - 3])
+            query = await readSQL.execute(file, ["and idt_farm = idFarm", "days_", "current_date"], ['', days, "current_date - 3"])
         } else {
             query = await readSQL.execute(file, ["idFarm", "days_"], [idt_farm, days])
         }
