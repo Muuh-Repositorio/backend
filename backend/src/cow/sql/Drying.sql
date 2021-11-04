@@ -14,5 +14,5 @@ from cow c
         on ld.idt_cow = c.idt_cow
 where
     c.idt_situation = 4 
-    and (ld.lastDate + 210) <= current_date
+    and (ld.lastDate + days_) <= current_date
     and idt_farm = idFarm;

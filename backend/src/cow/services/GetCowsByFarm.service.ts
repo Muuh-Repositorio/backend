@@ -7,7 +7,7 @@ export class GetCowsByFarm implements ServiceCommand {
     async execute(idt_farm: number): Promise<any[]> {
         const readSQL = new ReadSQL()
         const file = 'cow/sql/GetAllCows.sql'
-        const query = await readSQL.execute(file, "idFarm", idt_farm)
+        const query = await readSQL.execute(file, ["idFarm"], [idt_farm])
 
         const database = getManager()
         const result = await database.query(query)

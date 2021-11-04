@@ -12,5 +12,5 @@ from cow c
     left join lastChildbirth cb
         on cb.idt_cow = c.idt_cow
 where 
-    (c.idt_situation = 2 or (cb.lastDate + 60) <= current_date) 
+    (c.idt_situation = 2 or (cb.lastDate + days_) <= current_date) 
     and idt_farm = idFarm;
