@@ -8,11 +8,25 @@ with lastDiagnosis as
         group by idt_cow
     )
 select
-    c.*
+    u.name user_name,
+    u.phone phone,
+    c.idt_cow,
+    c.code,
+    c.name cow_name,
+    c.weight,
+    ld.lastDate insemination_date,
+    cs.situation,
+    f.name farm_name
 from cow c
     left join lastDiagnosis ld
         on ld.idt_cow = c.idt_cow
+    join farm f
+        on f.idt_farm = c.idt_farm
+    join users u
+        on u.idt_user = f.idt_user
+    join cow_situations cs
+        on c.idt_situation = cs.idt_situation
 where
     c.idt_situation = 4 
     and (ld.lastDate + days_) <= current_date
-    and idt_farm = idFarm;
+    and c.idt_farm = idFarm;
