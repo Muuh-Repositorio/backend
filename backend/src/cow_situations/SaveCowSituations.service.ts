@@ -17,6 +17,14 @@ export class SaveCowSituations implements ServiceCommand {
                 data.save()
                 situation = Situations.next(situation)
             }
+
+            const others = [ Situations.SOLD, Situations.DEAD ]
+            for (let i = 0; i < others.length; i++) {
+                const data = database.create(CowSituations)
+                data.idt_situation = Situations.getID(others[i])
+                data.situation = others[i]
+                data.save()
+            }
         }
     }
 }

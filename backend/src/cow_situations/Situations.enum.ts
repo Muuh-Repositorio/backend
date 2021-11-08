@@ -4,7 +4,9 @@ export enum Situations {
     INSEMINATED = 'Inseminated',
     PREGNANT = 'Pregnant',
     DRY = 'Dry',
-    BIRTH = 'Birth'
+    BIRTH = 'Birth',
+    SOLD = 'Sold',
+    DEAD = 'Dead'
 }
 
 export namespace Situations {
@@ -39,6 +41,10 @@ export namespace Situations {
                 return 5
             case Situations.BIRTH:
                 return 6
+            case Situations.SOLD:
+                return 7
+            case Situations.DEAD:
+                return 8
         }
     }
 }
