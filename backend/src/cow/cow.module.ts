@@ -14,12 +14,16 @@ import { BRtoUS } from 'src/utils/calculations/BRtoUS';
 import { CowSituationsModule } from 'src/cow_situations/cow_situtations.module';
 import { GetCowsAbleForController } from './controllers/GetCowsAbleFor.controller';
 import { GetCowsAbleFor } from './services/GetCowsAbleFor.service';
+import { UpdateCowInDatabase } from './repository/UpdateCow';
+import { UpdateCowController } from './controllers/UpdateCow.controller';
+import { UpdateCow } from './services/UpdateCow.service';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([
       CowRepository,
-      SaveCowInDatabase
+      SaveCowInDatabase,
+      UpdateCowInDatabase
     ]),
     InseminationModule,
     ChildbirthModule,
@@ -30,7 +34,8 @@ import { GetCowsAbleFor } from './services/GetCowsAbleFor.service';
     GetCowByIdController,
     GetCowsBySituationController,
     GetCowsByFarmController,
-    GetCowsAbleForController
+    GetCowsAbleForController,
+    UpdateCowController
   ],
   providers: [
     SaveCow,
@@ -41,7 +46,8 @@ import { GetCowsAbleFor } from './services/GetCowsAbleFor.service';
     DiagnosisDate,
     DryingDate,
     GetCowsByFarm,
-    GetCowsAbleFor
+    GetCowsAbleFor,
+    UpdateCow
   ],
   exports: [
     GetCowsBySituation,
