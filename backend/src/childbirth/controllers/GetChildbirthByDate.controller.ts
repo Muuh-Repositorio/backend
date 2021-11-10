@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from "@nestjs/common";
 import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ControllerCommand } from "src/Interfaces/ControllerCommand";
-import { Childbirth } from "../entity/childbirth.entity";
+import { Childbirth } from "../entity/Childbirth.entity";
 import { GetChildbirthByDate } from "../services/GetChildbirthByDate.service";
 
 @ApiTags('Childbirth')

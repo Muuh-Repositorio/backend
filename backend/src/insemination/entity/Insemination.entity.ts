@@ -1,4 +1,3 @@
-import { Childbirth } from "src/childbirth/entity/childbirth.entity";
 import { Cow } from "src/cow/entity/Cow.entity" ;
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 

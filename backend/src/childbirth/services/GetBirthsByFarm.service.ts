@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
-import { Childbirth } from "../entity/childbirth.entity";
+import { Childbirth } from "../entity/Childbirth.entity";
 import { ChildbirthRepository } from "../repository/ChildbirthRepository";
 
 @Injectable()

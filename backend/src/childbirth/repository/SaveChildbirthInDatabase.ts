@@ -2,7 +2,7 @@ import { ConflictException, InternalServerErrorException } from "@nestjs/common"
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { EntityRepository, Repository } from "typeorm";
 import { ChildbirthDto } from "../dto/ChildbirthDto";
-import { Childbirth } from "../entity/childbirth.entity";
+import { Childbirth } from "../entity/Childbirth.entity";
 
 @EntityRepository(Childbirth)
 export class SaveChildbirthInDatabase extends Repository<Childbirth> implements ServiceCommand{

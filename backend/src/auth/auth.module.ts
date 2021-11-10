@@ -11,7 +11,7 @@ import { UserRepository, SaveUserInDatabase } from './repository/index';
 import { AuthService } from './services/Auth.service';
 import { GetUserByCpf } from './services/GetUserByCpf.service';
 import { EmailValidation, GetUserById, HashPassword, SaveUser, SendEmail, ValidateToken } from './services/index';
-import { UserCpfValidation } from './pipes/usercpfvalidation.pipe';
+import { UserCpfValidation } from './pipes/UserCpfValidation.pipe';
 require('dotenv').config()
 
 @Module({

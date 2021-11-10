@@ -1,4 +1,4 @@
-import { Childbirth } from "src/childbirth/entity/childbirth.entity";
+import { Childbirth } from "src/childbirth/entity/Childbirth.entity";
 import { CowSituations } from "src/cow_situations/CowSituations.entity";
 import { Farm } from "src/farm/entity/Farm.entity";
 import { Insemination } from "src/insemination/entity/Insemination.entity";
