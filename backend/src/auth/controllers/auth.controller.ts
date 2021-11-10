@@ -3,7 +3,7 @@ import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { AuthDto } from "../dto/AuthCredentialsDto";
 import { LocalAuthGuard } from "../jwt/local-auth.guard";
 import { UserCpfValidation } from "../pipes";
-import { AuthService } from "../services/Auth.service";
+import { AuthService } from "../services/auth.service";
 
 @ApiTags('User')
 @Controller('api/auth/login')
