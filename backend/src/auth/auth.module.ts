@@ -12,6 +12,9 @@ import { AuthService } from './services/Auth.service';
 import { GetUserByCpf } from './services/GetUserByCpf.service';
 import { EmailValidation, GetUserById, HashPassword, SaveUser, SendEmail, ValidateToken } from './services/index';
 import { UserCpfValidation } from './pipes/UserCpfValidation.pipe';
+import { UpdateUserInDatabase } from './repository/UpdateUserInDatabase';
+import { UpdateUserController } from './controllers/UpdateUser.controller';
+import { UpdateUser } from './services/UpdateUser.service';
 require('dotenv').config()
 
 @Module({
@@ -19,6 +22,7 @@ require('dotenv').config()
     TypeOrmModule.forFeature([
       UserRepository,
       SaveUserInDatabase,
+      UpdateUserInDatabase
     ]),
     JwtModule.register({
       secret: process.env.secretPassword,
@@ -31,7 +35,8 @@ require('dotenv').config()
     GetUserByCpfController,
     EmailValidationController,
     AuthController,
-    ValidateTokenController
+    ValidateTokenController,
+    UpdateUserController
   ],
   providers: [
     GetUserById,
@@ -45,7 +50,8 @@ require('dotenv').config()
     JwtStrategy,
     UserIdValidation,
     UserCpfValidation,
-    ValidateToken
+    ValidateToken,
+    UpdateUser
   ],
   exports: [
     AuthService,
