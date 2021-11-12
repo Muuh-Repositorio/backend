@@ -17,6 +17,7 @@ import { GetCowsAbleFor } from './services/GetCowsAbleFor.service';
 import { UpdateCowInDatabase } from './repository/UpdateCow';
 import { UpdateCowController } from './controllers/UpdateCow.controller';
 import { UpdateCow } from './services/UpdateCow.service';
+import { WeightHistoryModule } from 'src/weight_history/weight_history.module';
 
 @Module({
   imports: [
@@ -27,7 +28,8 @@ import { UpdateCow } from './services/UpdateCow.service';
     ]),
     InseminationModule,
     ChildbirthModule,
-    CowSituationsModule
+    CowSituationsModule,
+    WeightHistoryModule
   ],
   controllers: [
     SaveCowController,
