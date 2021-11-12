@@ -18,10 +18,7 @@ export class SaveWeightInDatabase extends Repository<WeightHistory> {
             await history.save()
             return history
         } catch (error) {
-            console.log(error);
-            
             throw new InternalServerErrorException('Erro no servidor!')
-
         }
     }
 }
