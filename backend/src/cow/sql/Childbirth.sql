@@ -28,5 +28,5 @@ from cow c
         on c.idt_situation = cs.idt_situation
 where
     c.idt_situation = 5 
-    and (ld.lastDate + days_) <= current_date
+    and (ld.lastDate + days_ <= current_date)
     and c.idt_farm = idFarm;
