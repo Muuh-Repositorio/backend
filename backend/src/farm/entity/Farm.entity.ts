@@ -13,6 +13,9 @@ export class Farm extends BaseEntity {
     @Column()
     name: string
 
+    @Column({ default: 3 })
+    notifications_days: number
+
     @ManyToOne(() => Users, user => user.farms)
     @JoinColumn({ name: 'idt_user' })
     user: number
