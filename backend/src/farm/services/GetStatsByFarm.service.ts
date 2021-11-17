@@ -15,17 +15,17 @@ export class GetStatsByFarm implements ServiceCommand {
         private getCowsAbleFor: GetCowsAbleFor,
         private getCowsBySituation: GetCowsBySituation,
         private getCowsByFarm: GetCowsByFarm, 
-        private getInseminationsByFarm: GetInseminationsByFarm,
         private getBirthsByFarm: GetBirthsByFarm
     ) {}
 
     async execute(idt_farm: number): Promise<Stats> {
         const able_id = Situations.getID(Situations.ABLE)
+        const inseminated_id = Situations.getID(Situations.INSEMINATED)
 
         try {
             const result: Stats = { 
                 total_cows: (await this.getCowsByFarm.execute(idt_farm)).length,
-                number_of_inseminations: (await this.getInseminationsByFarm.execute(idt_farm)).length,
+                number_of_inseminations: (await this.getCowsBySituation.execute(idt_farm, inseminated_id)).length,
                 cows_available: (await this.getCowsBySituation.execute(idt_farm, able_id)).length,
                 number_of_childbirths: (await this.getBirthsByFarm.execute(idt_farm)).length,
                 cows_able_to_inseminate: (await this.getCowsAbleFor.execute(AbleSituations.INSEMINATE, idt_farm)).length,

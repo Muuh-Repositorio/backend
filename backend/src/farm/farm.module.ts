@@ -18,7 +18,6 @@ import { GetAllFarmsByUser, GetFarmByCnpj, SaveFarm } from './services/index';
         ]),
         AuthModule,
         CowModule,
-        InseminationModule,
         ChildbirthModule
     ],
     controllers: [
