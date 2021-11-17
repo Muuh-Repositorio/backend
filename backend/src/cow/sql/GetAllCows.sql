@@ -1,3 +1,16 @@
+with
+last_inemination as
+    (select
+        idt_cow,
+        max(insemination_date) lastInsemination
+     from insemination
+     group by idt_cow),
+last_birth as
+    (select
+        idt_cow,
+        max(childbirth_date) lastBirth
+    from childbirth
+    group by idt_cow)
 select
     c.idt_cow,
     c.code,
@@ -5,16 +18,21 @@ select
     c.weight,
     c.birth_date,
     tc.type,
-    max(cb.childbirth_date) lastBirth,
-    max(i.insemination_date) lastInsemination,
+    lb.lastBirth,
+    li.lastInsemination,
     i.diagnosis,
-    c.idt_situation
+    c.idt_situation,
+    cs.situation
 from cow c
-    full join childbirth cb
-        on c.idt_cow = cb.idt_cow
-    full join insemination i
-        on c.idt_cow = i.idt_cow
+    left join last_inemination li
+        on li.idt_cow = c.idt_cow
+    left join last_birth lb
+        on lb.idt_cow = c.idt_cow
+    left join insemination i
+        on i.insemination_date = li.lastInsemination
+               and i.idt_cow = li.idt_cow
     join type_cow tc
         on tc.idt_type = c.idt_type
-where c.idt_farm = idFarm
-group by c.idt_cow, tc.type, i.diagnosis;
+    join cow_situations cs
+        on c.idt_situation = cs.idt_situation
+where c.idt_farm = idFarm;
