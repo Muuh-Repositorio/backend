@@ -1,12 +1,12 @@
 export enum Situations {
-    HEIFER = 'Heifer',
-    ABLE = 'Able',
-    INSEMINATED = 'Inseminated',
-    PREGNANT = 'Pregnant',
-    DRY = 'Dry',
-    BIRTH = 'Birth',
-    SOLD = 'Sold',
-    DEAD = 'Dead'
+    HEIFER = 'Novilha',
+    ABLE = 'Apta',
+    INSEMINATED = 'Inseminada',
+    PREGNANT = 'Grávida',
+    DRY = 'Seca',
+    BIRTH = 'Parida',
+    SOLD = 'Vendida',
+    DEAD = 'Morta'
 }
 
 export namespace Situations {
