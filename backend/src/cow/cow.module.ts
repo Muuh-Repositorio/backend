@@ -18,6 +18,9 @@ import { UpdateCowInDatabase } from './repository/UpdateCow';
 import { UpdateCowController } from './controllers/UpdateCow.controller';
 import { UpdateCow } from './services/UpdateCow.service';
 import { WeightHistoryModule } from 'src/weight_history/weight_history.module';
+import { TypeCowModule } from 'src/type_cow/TypeCow.module';
+import { ValidateCow } from './services/ValidateCow.service';
+import { ValidateCowController } from './controllers/ValidateCow.controller';
 
 @Module({
   imports: [
@@ -29,7 +32,8 @@ import { WeightHistoryModule } from 'src/weight_history/weight_history.module';
     InseminationModule,
     ChildbirthModule,
     CowSituationsModule,
-    WeightHistoryModule
+    WeightHistoryModule,
+    TypeCowModule
   ],
   controllers: [
     SaveCowController,
@@ -37,7 +41,8 @@ import { WeightHistoryModule } from 'src/weight_history/weight_history.module';
     GetCowsBySituationController,
     GetCowsByFarmController,
     GetCowsAbleForController,
-    UpdateCowController
+    UpdateCowController,
+    ValidateCowController
   ],
   providers: [
     SaveCow,
@@ -49,7 +54,8 @@ import { WeightHistoryModule } from 'src/weight_history/weight_history.module';
     DryingDate,
     GetCowsByFarm,
     GetCowsAbleFor,
-    UpdateCow
+    UpdateCow,
+    ValidateCow
   ],
   exports: [
     GetCowsBySituation,

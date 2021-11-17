@@ -16,10 +16,8 @@ export class SaveCowTypes implements ServiceCommand {
             const data = database.create(TypeCow)
             data.idt_type = type.id
             data.type = type.name
-            data.min_ideal_weight = type.weight.min
-            data.max_ideal_weight = type.weight.max
-            data.min_ideal_age = type.age.min
-            data.max_ideal_age = type.age.max
+            data.ideal_weight = type.weight
+            data.ideal_age = type.age
 
             data.save()
         }

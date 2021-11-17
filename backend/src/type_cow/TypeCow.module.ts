@@ -16,8 +16,7 @@ import { CowModule } from 'src/cow/cow.module';
             SaveTypeCowInDatabase,
             TypeCowRepository
         ]),
-        AuthModule,
-        CowModule
+        AuthModule
     ],
     controllers: [
         SaveTypeCowController,
@@ -27,5 +26,8 @@ import { CowModule } from 'src/cow/cow.module';
         SaveTypeCow,
         GetCowTypes
     ],
+    exports: [
+        GetCowTypes
+    ]
 })
 export class TypeCowModule { }

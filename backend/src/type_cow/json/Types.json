@@ -1,11 +1,11 @@
 [
-    { "id": 1, "name": "Holandesa", "weight": { "min": 330, "max": 340}, "age": { "min": 13, "max": 14 }},
-    { "id": 2, "name": "Jersey", "weight": { "min": 230, "max": 240}, "age": { "min": 13, "max": 14 }},
-    { "id": 3, "name": "Pardo Suiço", "weight": { "min": 330, "max": 340}, "age": { "min": 13, "max": 14 }},
-    { "id": 4, "name": "Simental", "weight": { "min": 330, "max": 340}, "age": { "min": 13, "max": 14 }},
-    { "id": 5, "name": "Gir Leiteiro", "weight": { "min": 300, "max": 320}, "age": { "min": 38, "max": 39 }},
-    { "id": 6, "name": "Guzerá Leiteiro", "weight": { "min": 320, "max": 330}, "age": { "min": 33, "max": 34 }},
-    { "id": 7, "name": "Girolando", "weight": { "min": 320, "max": 330}, "age": { "min": 18, "max": 22 }},
-    { "id": 8, "name": "Guzolando", "weight": { "min": 320, "max": 330}, "age": { "min": 18, "max": 22 }},
-    { "id": 9, "name": "Sindi", "weight": { "min": 230, "max": 240}, "age": { "min": 24, "max": 25 }}
+    { "id": 1, "name": "Holandesa", "weight": 330, "age": 13 },
+    { "id": 2, "name": "Jersey", "weight": 230, "age": 13 },
+    { "id": 3, "name": "Pardo Suiço", "weight": 330, "age": 13 },
+    { "id": 4, "name": "Simental", "weight": 330, "age": 13 },
+    { "id": 5, "name": "Gir Leiteiro", "weight": 300, "age": 38 },
+    { "id": 6, "name": "Guzerá Leiteiro", "weight": 320, "age": 33 },
+    { "id": 7, "name": "Girolando", "weight": 320, "age": 18 },
+    { "id": 8, "name": "Guzolando", "weight": 320, "age": 18 },
+    { "id": 9, "name": "Sindi", "weight": 230, "age": 24 }
 ]
