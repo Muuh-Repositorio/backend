@@ -29,7 +29,8 @@ import { UpdateInsemination } from './services/UpdateInsemination.service';
     UpdateInsemination
   ],
   exports: [
-    GetInseminationByCow
+    GetInseminationByCow,
+    GetInseminationsByFarm
   ]
 })
 export class InseminationModule {}

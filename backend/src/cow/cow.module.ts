@@ -53,6 +53,8 @@ import { WeightHistoryModule } from 'src/weight_history/weight_history.module';
   ],
   exports: [
     GetCowsBySituation,
+    GetCowsByFarm,
+    GetCowsAbleFor
   ]
 })
 export class CowModule {}
