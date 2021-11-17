@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CowModule } from 'src/cow/cow.module';
-import { SaveInseminationController, GetInseminationByCowController, ListInseminationsController } from './controllers/index';
+import { SaveInseminationController, GetInseminationByCowController, GetInseminationsByFarmController } from './controllers/index';
 import { UpdateInseminationController } from './controllers/UpdateInsemination.controller';
 import { InseminationRepository, SaveInseminationInDatabase } from './repository/index';
 import { UpdateInseminationInDatabase } from './repository/UpdateInsemination';
-import { GetInseminationByCow, SaveInsemination, ListInseminations } from './services/index';
+import { GetInseminationByCow, SaveInsemination, GetInseminationsByFarm } from './services/index';
 import { UpdateInsemination } from './services/UpdateInsemination.service';
 
 @Module({
@@ -19,13 +19,13 @@ import { UpdateInsemination } from './services/UpdateInsemination.service';
   controllers: [
     SaveInseminationController,
     GetInseminationByCowController,
-    ListInseminationsController,
+    GetInseminationsByFarmController,
     UpdateInseminationController
   ],
   providers: [
     SaveInsemination,
     GetInseminationByCow,
-    ListInseminations,
+    GetInseminationsByFarm,
     UpdateInsemination
   ],
   exports: [
