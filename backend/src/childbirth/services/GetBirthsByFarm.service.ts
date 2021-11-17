@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
+import { ReadSQL } from "src/utils/services/ReadSQL.service";
 import { Childbirth } from "../entity/Childbirth.entity";
 import { ChildbirthRepository } from "../repository/ChildbirthRepository";
 
@@ -12,15 +13,12 @@ export class GetBirthsByFarm implements ServiceCommand {
     ) {}
 
     async execute(idt_farm: number): Promise<Childbirth[]> {
-        return await this.childBirthRepository.query(`
-            select
-                c.idt_cow,
-                c.idt_farm
-            from cow c
-                join childbirth cb
-                    on c.idt_cow = cb.idt_cow
-            where c.idt_farm = ${idt_farm}
-            group by c.idt_cow;
-        `)
+        const readSQL = new ReadSQL()
+
+        const file = 'childbirth/sql/BirthsByFarm.sql'
+        const query = await readSQL.execute(file, ['idFarm'], [idt_farm])
+        const births = await this.childBirthRepository.query(query)
+
+        return births
     }
 }
