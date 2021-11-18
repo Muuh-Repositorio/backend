@@ -8,7 +8,7 @@ export class CowParamsDto {
 
     @ApiProperty()
     @IsNotEmpty({ message: 'Data de nascimento da vaca não informada!'})
-    birth_date: number
+    birth_date: string
 
     @ApiProperty()
     @IsNotEmpty({ message: "Raça da vaca não informada!" })
