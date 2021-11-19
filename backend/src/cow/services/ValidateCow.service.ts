@@ -19,8 +19,9 @@ export class ValidateCow implements ServiceCommand {
         const birth_date_ = moment(new Date(birth_date).toLocaleDateString('pt-BR'), "DD-MM-YYYY")
         const ageInMonths = Math.floor(moment.duration(now.diff(birth_date_)).asMonths())
 
+        
         const ageIsValid = ageInMonths >= type[0].ideal_age
-        const weightIsValid = Number(weight) >= type[0].ideal_weight
+        const weightIsValid = Number(weight) >= Number(type[0].ideal_weight)
         if (ageIsValid && weightIsValid) {
             return true
         }

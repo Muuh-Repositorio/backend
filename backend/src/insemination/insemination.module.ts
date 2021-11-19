@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CowModule } from 'src/cow/cow.module';
 import { SaveInseminationController, GetInseminationByCowController, GetInseminationsByFarmController } from './controllers/index';
@@ -14,7 +14,8 @@ import { UpdateInsemination } from './services/UpdateInsemination.service';
       InseminationRepository,
       SaveInseminationInDatabase,
       UpdateInseminationInDatabase
-    ])
+    ]),
+    forwardRef(() => CowModule)
   ],
   controllers: [
     SaveInseminationController,

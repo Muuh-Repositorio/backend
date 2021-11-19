@@ -6,12 +6,13 @@ import { Cow } from "../entity/Cow.entity";
 @EntityRepository(Cow)
 export class UpdateCowInDatabase extends Repository<Cow> {
     async execute(cowDto: UpdateCowDto, idt_cow: number): Promise<Cow> {
-        const { idt_farm, weight } = cowDto
+        const { idt_farm, weight, situation } = cowDto
 
         const cow = this.create()
 
         if (idt_farm) cow.idt_farm = idt_farm
         if (weight) cow.weight = weight
+        if (situation) cow.idt_situation = situation
 
         cow.idt_cow = idt_cow
 

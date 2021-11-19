@@ -7,6 +7,7 @@ import { SaveCowInDatabase } from "../../cow/repository/SaveCowInDatabase";
 import { ValidateCow } from "./ValidateCow.service";
 import { Situations } from "src/cow_situations/Situations.enum";
 import { CowParamsDto } from "../dto/CowParamsDto";
+import { SaveWeight } from "src/weight_history/services/SaveWeight.service";
 
 @Injectable()
 export class SaveCow implements ServiceCommand {
@@ -14,7 +15,8 @@ export class SaveCow implements ServiceCommand {
     constructor(
         @InjectRepository(SaveCowInDatabase)
         private saveCowInDatabase: SaveCowInDatabase,
-        private validateCow: ValidateCow
+        private validateCow: ValidateCow,
+        private saveWeightHistory: SaveWeight
     ) {}
 
     async execute(cowDto: CowDto): Promise<CowResponse> {
@@ -33,6 +35,7 @@ export class SaveCow implements ServiceCommand {
         }
 
         const cow = await this.saveCowInDatabase.execute(cowDto, idt_situation);
+        await this.saveWeightHistory.execute({ idt_cow: cow.idt_cow, weight: cow.weight })
         
         return {
             idt_cow: cow.idt_cow,

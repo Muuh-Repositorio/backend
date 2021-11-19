@@ -4,7 +4,7 @@ import { IsNotEmpty, IsOptional } from "class-validator"
 export class CowDto {
 
     @ApiProperty()
-    @IsNotEmpty({ message: "Usuário não informado!" })
+    @IsNotEmpty({ message: "Fazenda não informado!" })
     idt_farm: number
 
     @ApiProperty()
