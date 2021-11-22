@@ -1,4 +1,3 @@
-import { Childbirth } from "src/childbirth/entity/childbirth.entity";
 import { Cow } from "src/cow/entity/Cow.entity" ;
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -13,4 +12,7 @@ export class Insemination extends BaseEntity {
 
     @Column({ type: 'date' })
     insemination_date: string
+
+    @Column({ default: null })
+    diagnosis: boolean
 }

@@ -3,7 +3,8 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { SaveCowSituations } from './cow_situations/SaveCowSituations.service';
-import { Chatbot } from './utils/mimosa/chatbot.service';
+import { SaveCowTypes } from './type_cow/services/SaveCowTypes.service';
+import { Chatbot } from './utils/mimosa/Chatbot.service';
 import { Notification } from './utils/mimosa/Notification.service';
 
 async function bootstrap() {
@@ -23,12 +24,15 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('api', app, document)
+  
+  const saveCowTypes = new SaveCowTypes()
+  await saveCowTypes.execute()
 
   const saveCowSituations = new SaveCowSituations()
-  saveCowSituations.execute()
+  await saveCowSituations.execute()
 
-  const initChatbot = new Chatbot(new Notification())
-  initChatbot.execute()
+  // const initChatbot = new Chatbot(new Notification())
+  // initChatbot.execute()
   
   await app.listen(3000);
 }

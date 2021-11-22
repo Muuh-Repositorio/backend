@@ -1,34 +1,30 @@
-import { Injectable } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
-import { Cow } from "../entity/Cow.entity";
-import { CowRepository } from "../repository";
+import { ReadSQL } from "src/utils/services/ReadSQL.service";
+import { getManager } from "typeorm";
 
-@Injectable()
 export class GetCowsByFarm implements ServiceCommand {
-    constructor(
-        @InjectRepository(CowRepository)
-        private cowRepository: CowRepository,
-    ) {}
 
-    async execute(idt_farm: number): Promise<Cow[]> {
-        return this.cowRepository.query(`
-            select
-                c.idt_cow,
-                c.name,
-                c.code,
-                c.weight,
-                c.birth_date,
-                c.idt_type,
-                max(cb.childbirth_date) lastBirth,
-                max(i.insemination_date) lastInsemination
-            from cow c
-                full join childbirth cb
-                    on c.idt_cow = cb.idt_cow
-                full join insemination i
-                    on c.idt_cow = i.idt_cow
-            where c.idt_farm = ${idt_farm}
-            group by c.idt_cow;
-        `)
+    async execute(idt_farm: number): Promise<any[]> {
+        const readSQL = new ReadSQL()
+        const file = 'cow/sql/GetAllCows.sql'
+        const query = await readSQL.execute(file, ["idFarm"], [idt_farm])
+
+        const database = getManager()
+        const result = await database.query(query)
+        return result.map((cow: any) => {
+            return {
+                idt_cow: cow.idt_cow,
+                code: cow.code,
+                name: cow.name,
+                weight: cow.weight,
+                birth_date: cow.birth_date === null ? null : new Date(cow.birth_date).toLocaleDateString('pt-BR'),
+                type: cow.type,
+                lastbirth: cow.lastbirth === null ? null : new Date(cow.lastbirth).toLocaleDateString('pt-BR'),
+                lastinsemination:cow.lastinsemination === null ? null : new Date(cow.lastinsemination).toLocaleDateString('pt-BR'),
+                diagnosis: cow.diagnosis === true ? 'Positivo' : cow.diagnosis === false ? 'Negativo' : null,
+                idt_situation: cow.idt_situation,
+                situation: cow.situation
+            }
+        })
     }
 }

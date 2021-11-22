@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Situations } from "src/cow_situations/Situations.enum";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { Cow } from "../entity/Cow.entity";
 import { CowRepository } from "../repository";

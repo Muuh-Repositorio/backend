@@ -7,6 +7,7 @@ import { SaveTypeCowInDatabase } from './repository/SaveTypeCowInDatabase';
 import { TypeCowRepository } from './repository/TypeCowRepository';
 import { GetCowTypes } from './services/GetCowTypes.service';
 import { SaveTypeCow } from './services/SaveTypeCow.service';
+import { CowModule } from 'src/cow/cow.module';
 
 
 @Module({
@@ -25,5 +26,8 @@ import { SaveTypeCow } from './services/SaveTypeCow.service';
         SaveTypeCow,
         GetCowTypes
     ],
+    exports: [
+        GetCowTypes
+    ]
 })
 export class TypeCowModule { }

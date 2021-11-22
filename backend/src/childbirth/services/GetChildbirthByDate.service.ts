@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { CowRepository } from "src/cow/repository";
 import { GetCowById } from "src/cow/services";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
-import { Childbirth } from "../entity/childbirth.entity";
+import { Childbirth } from "../entity/Childbirth.entity";
 import { ChildbirthRepository } from "../repository/ChildbirthRepository";
 
 @Injectable()

@@ -1,4 +1,3 @@
-
 import { PipeTransform, Injectable, ArgumentMetadata, NotFoundException } from '@nestjs/common';
 import { GetUserByCpf } from '../services/GetUserByCpf.service';
 

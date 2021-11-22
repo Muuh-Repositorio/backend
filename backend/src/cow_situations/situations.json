@@ -1,8 +1,0 @@
-[
-    {"idt": 1, "situation": "Novilha"},
-    {"idt": 2, "situation": "Apta"},
-    {"idt": 3, "situation": "Inseminada"},
-    {"idt": 4, "situation": "Emprenhada"},
-    {"idt": 5, "situation": "Seca"},
-    {"idt": 6, "situation": "Parida"}
-]

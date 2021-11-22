@@ -34,7 +34,8 @@ import { SaveChildbirth } from './services/SaveChildbirth.service';
     ],
     exports: [
         GetChildbirthByCow,
-        GetChildbirthByDate
+        GetChildbirthByDate,
+        GetBirthsByFarm
     ]
 })
 export class ChildbirthModule { }

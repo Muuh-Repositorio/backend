@@ -1,6 +1,7 @@
 import { Users } from "src/auth/entity/User.entity";
 import { Cow } from "src/cow/entity/Cow.entity";
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Notifications } from "../interfaces/Notifications.enum";
 
 @Entity()
 export class Farm extends BaseEntity {
@@ -12,6 +13,12 @@ export class Farm extends BaseEntity {
 
     @Column()
     name: string
+
+    @Column({ nullable: true })
+    notifications_days: number
+
+    @Column({ nullable: true })
+    notifications: Notifications
 
     @ManyToOne(() => Users, user => user.farms)
     @JoinColumn({ name: 'idt_user' })

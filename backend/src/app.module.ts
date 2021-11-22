@@ -8,6 +8,8 @@ import { CowModule } from './cow/cow.module';
 import { TypeCowModule } from './type_cow/TypeCow.module';
 import { InseminationModule } from './insemination/insemination.module';
 import { CowSituationsModule } from './cow_situations/cow_situtations.module';
+import { WeightHistoryModule } from './weight_history/weight_history.module';
+require('dotenv').config()
 
 @Module({
   imports: [
@@ -18,7 +20,8 @@ import { CowSituationsModule } from './cow_situations/cow_situtations.module';
     ChildbirthModule,
     TypeCowModule,
     InseminationModule,
-    CowSituationsModule
+    CowSituationsModule,
+    WeightHistoryModule
   ],
   controllers: [],
   providers: [],

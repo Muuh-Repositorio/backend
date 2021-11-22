@@ -3,7 +3,7 @@ import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { ControllerCommand } from "src/Interfaces/ControllerCommand";
 import { UserResponse } from "../interfaces/UserResponse";
 import { JwtAuthGuard } from "../jwt/jwt-auth.guard";
-import { UserCpfValidation } from "../pipes/usercpfvalidation.pipe";
+import { UserCpfValidation } from "../pipes/UserCpfValidation.pipe";
 import { GetUserByCpf } from "../services/GetUserByCpf.service";
 
 @ApiTags('User')

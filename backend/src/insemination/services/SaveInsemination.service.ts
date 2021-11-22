@@ -1,5 +1,7 @@
-import { Injectable } from "@nestjs/common";
+import { forwardRef, Inject, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { UpdateCow } from "src/cow/services/UpdateCow.service";
+import { Situations } from "src/cow_situations/Situations.enum";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { InseminationDto } from "../dto/InseminationDto";
 import { InseminationResponse } from "../interfaces/InseminationResponse";
@@ -12,16 +14,12 @@ export class SaveInsemination implements ServiceCommand {
     constructor(
         @InjectRepository(SaveInseminationInDatabase)
         private saveInseminationInDatabase: SaveInseminationInDatabase,
-        private inseminationRepository: InseminationRepository
+        private updateCow: UpdateCow
     ) {}
 
     async execute(inseminationDto: InseminationDto): Promise<InseminationResponse> {
-        const exist = await this.inseminationRepository.findOne({idt_cow: inseminationDto.idt_cow})
-        if(exist) {
-            this.saveInseminationInDatabase.update(exist.idt_insemination, { insemination_date: inseminationDto.insemination_date})
-        }
-
         const insemination = await this.saveInseminationInDatabase.execute(inseminationDto);
+        this.updateCow.execute({ situation: Situations.getID(Situations.INSEMINATED) }, inseminationDto.idt_cow)
         
         return {
             idt_insemination: insemination.idt_insemination,

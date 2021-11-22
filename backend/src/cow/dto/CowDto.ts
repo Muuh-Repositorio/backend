@@ -1,14 +1,10 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { IsNotEmpty } from "class-validator"
+import { IsNotEmpty, IsOptional } from "class-validator"
 
 export class CowDto {
 
     @ApiProperty()
-    @IsNotEmpty({ message: "Situação não informada!" })
-    idt_situation: number
-
-    @ApiProperty()
-    @IsNotEmpty({ message: "Usuário não informado!" })
+    @IsNotEmpty({ message: "Fazenda não informado!" })
     idt_farm: number
 
     @ApiProperty()

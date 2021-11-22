@@ -5,55 +5,63 @@ import { DiagnosisDate } from 'src/utils/calculations/DiagnosisDate';
 import { DryingDate } from 'src/utils/calculations/DryingDate';
 import { GetCowsByFarmController } from './controllers/GetCowsByFarm.controller';
 import { GetCowsByFarm } from './services/GetCowsByFarm.service';
-import { GetCowsForInseminationController } from './controllers/GetCowsForInsemination.controller';
-import { GetCowsForDryingController } from './controllers/GetCowsForDrying.controller';
-import { SaveCowController, GetCowByIdController, GetCowsForDiagnosisController, GetCowsBySituationController } from './controllers/index';
+import { SaveCowController, GetCowByIdController, GetCowsBySituationController } from './controllers/index';
 import { CowRepository, SaveCowInDatabase } from './repository/index';
-import { GetCowsForInsemination } from './services/GetCowsForInsemination';
-import { GetCowsForDrying } from './services/GetCowsForDrying.service';
-import { GetCowById, SaveCow, GetCowsBySituation, GetCowsForDiagnosis } from './services/index';
-import { GetAbleCowsAfterChildbirth } from './services/GetAbleCowsAfterChildbirth';
-import { GetAbleCowsAfterChildbirthController } from './controllers/GetAbleCowsAfterChildbirth.controller';
+import { GetCowById, SaveCow, GetCowsBySituation } from './services/index';
 import { ChildbirthModule } from 'src/childbirth/Childbirth.module';
 import { AbleDate } from 'src/utils/calculations/AbleDate';
 import { BRtoUS } from 'src/utils/calculations/BRtoUS';
+import { CowSituationsModule } from 'src/cow_situations/cow_situtations.module';
+import { GetCowsAbleForController } from './controllers/GetCowsAbleFor.controller';
+import { GetCowsAbleFor } from './services/GetCowsAbleFor.service';
+import { UpdateCowInDatabase } from './repository/UpdateCow';
+import { UpdateCowController } from './controllers/UpdateCow.controller';
+import { UpdateCow } from './services/UpdateCow.service';
+import { WeightHistoryModule } from 'src/weight_history/weight_history.module';
+import { TypeCowModule } from 'src/type_cow/TypeCow.module';
+import { ValidateCow } from './services/ValidateCow.service';
+import { ValidateCowController } from './controllers/ValidateCow.controller';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([
       CowRepository,
-      SaveCowInDatabase
+      SaveCowInDatabase,
+      UpdateCowInDatabase
     ]),
     InseminationModule,
-    ChildbirthModule
+    ChildbirthModule,
+    CowSituationsModule,
+    WeightHistoryModule,
+    TypeCowModule
   ],
   controllers: [
     SaveCowController,
     GetCowByIdController,
     GetCowsBySituationController,
-    GetCowsForDiagnosisController,
-    GetCowsForDryingController,
     GetCowsByFarmController,
-    GetCowsForInseminationController,
-    GetAbleCowsAfterChildbirthController
+    GetCowsAbleForController,
+    UpdateCowController,
+    ValidateCowController
   ],
   providers: [
     SaveCow,
     GetCowById,
     GetCowsBySituation,
-    GetCowsForDiagnosis,
-    GetCowsForDrying,
-    GetCowsForInsemination,
-    GetAbleCowsAfterChildbirth,
     AbleDate,
     BRtoUS,
     DiagnosisDate,
     DryingDate,
-    GetCowsByFarm
+    GetCowsByFarm,
+    GetCowsAbleFor,
+    UpdateCow,
+    ValidateCow
   ],
   exports: [
     GetCowsBySituation,
-    GetCowsForDrying
+    GetCowsByFarm,
+    GetCowsAbleFor,
+    UpdateCow
   ]
 })
 export class CowModule {}

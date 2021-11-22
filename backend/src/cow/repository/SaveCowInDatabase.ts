@@ -8,8 +8,8 @@ import { Cow } from "../entity/Cow.entity";
 @EntityRepository(Cow)
 export class SaveCowInDatabase extends Repository<Cow>  {
 
-    async execute(cowDto: CowDto): Promise<Cow> {
-        const { idt_situation, idt_farm, idt_type, code, name, weight, birth_date } = cowDto
+    async execute(cowDto: CowDto, idt_situation: number): Promise<Cow> {
+        const { idt_farm, idt_type, code, name, weight, birth_date } = cowDto
 
         const cow = this.create()
 
