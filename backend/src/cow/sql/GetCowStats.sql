@@ -12,9 +12,9 @@ select
     max(cb.childbirth_date) as last_childbirth,
     max(wh.update_date) as last_weight
 from cow c
-    join childbirth cb
+    left join childbirth cb
         on cb.idt_cow = c.idt_cow
-    join insemination i
+    left join insemination i
         on c.idt_cow = i.idt_cow
     join type_cow tc
         on tc.idt_type = c.idt_type
@@ -22,5 +22,5 @@ from cow c
         on c.idt_situation = cs.idt_situation
     join weight_history wh
         on c.idt_cow = wh.idt_cow
-where (c.idt_cow = cowParam or c.name = cowParam) and c.idt_farm = idFarm
+where (c.idt_cow = cowParam or c.code = cowParam) and c.idt_farm = idFarm
 group by cs.situation, c.name, c.code, c.weight, c.birth_date, tc.type, c.idt_cow;

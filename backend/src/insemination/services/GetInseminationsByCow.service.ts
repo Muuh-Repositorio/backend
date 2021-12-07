@@ -2,7 +2,6 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { Insemination } from "../entity/Insemination.entity";
-import { InseminationResponse } from "../interfaces/InseminationResponse";
 import { InseminationRepository } from "../repository/InseminationRepository";
 
 @Injectable()

@@ -18,16 +18,24 @@ export class GetCowStats implements ServiceCommand {
     async execute(cowParam: any, idt_farm: number) {
         const readSQL = new ReadSQL()
         const file = 'cow/sql/GetCowStats.sql'
-        
-        const param1 = Number.isInteger(Number(cowParam)) ? cowParam : 0
-        const param2 = Number.isInteger(Number(cowParam)) ? null : cowParam
 
-        const query = await readSQL.execute(file, ["cowParam", "cowParam" ,'idFarm'], [param1, param2, idt_farm])
+        const query = await readSQL.execute(file, ["cowParam", "cowParam" ,'idFarm'], [cowParam, `'${cowParam}'`, idt_farm])
         const database = getManager()
-        const result = await database.query(query)
+        let result = await database.query(query)
 
         const data = {
-            ...result[0],
+            last_weight: new Date(result[0].last_weight).toLocaleDateString('pt-Br'),
+            idt_cow: result[0].idt_cow,
+            name: result[0].name,
+            code: result[0].code,
+            weight: result[0].weight,
+            birth_date: new Date(result[0].birth_date).toLocaleDateString('pt-Br'),
+            type: result[0].type,
+            situation: result[0].situation,
+            total_childbirths: result[0].total_childbirths,
+            total_inseminations: result[0].total_inseminations,
+            last_insemination: new Date(result[0].last_insemination).toLocaleDateString('pt-Br'),
+            last_childbirth: new Date(result[0].last_childbirth).toLocaleDateString('pt-Br'),
             inseminations: await this.getInseminationsByCow.execute(result[0].idt_cow),
             childbirths: await this.getChildbirthByCow.execute(result[0].idt_cow)
         }
