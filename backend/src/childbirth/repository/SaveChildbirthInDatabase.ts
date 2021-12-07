@@ -8,11 +8,12 @@ import { Childbirth } from "../entity/Childbirth.entity";
 export class SaveChildbirthInDatabase extends Repository<Childbirth> implements ServiceCommand{
 
     async execute(childbirthDto: ChildbirthDto): Promise<Childbirth>{
-        const { idt_cow, childbirth_date } = childbirthDto
+        const { idt_cow, childbirth_date, heifer_gender } = childbirthDto
 
         const childbirth = this.create()
 
-        childbirth.idt_cow = idt_cow,
+        childbirth.idt_cow = idt_cow
+        childbirth.heifer_gender = heifer_gender
         childbirth.childbirth_date = childbirth_date
 
         try {
