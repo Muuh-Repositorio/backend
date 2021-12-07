@@ -12,4 +12,7 @@ export class ChildbirthDto{
     @IsNotEmpty({ message: 'Data do parto não informada! '})
     childbirth_date: string
 
+    @ApiProperty()
+    @IsNotEmpty({ message: "Sexo da novilha não informado!" })
+    heifer_gender: string    
 }
