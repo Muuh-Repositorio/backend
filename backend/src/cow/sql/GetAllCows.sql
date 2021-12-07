@@ -22,7 +22,8 @@ select
     li.lastInsemination,
     i.diagnosis,
     c.idt_situation,
-    cs.situation
+    cs.situation,
+    c.gender
 from cow c
     left join last_inemination li
         on li.idt_cow = c.idt_cow

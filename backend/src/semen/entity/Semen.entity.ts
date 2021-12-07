@@ -1,3 +1,4 @@
+import { Farm } from "src/farm/entity/Farm.entity";
 import { Insemination } from "src/insemination/entity/Insemination.entity";
 import { TypeCow } from "src/type_cow/entity/TypeCow.entity";
 import { BaseEntity, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
@@ -13,4 +14,8 @@ export class Semen extends BaseEntity {
 
     @OneToOne(() => Insemination, insemination => insemination.idt_semen)
     insemination: Insemination
+
+    @ManyToOne(() => Farm, farm => farm.semens)
+    @JoinColumn({ name: 'idt_farm' })
+    idt_farm: number
 }

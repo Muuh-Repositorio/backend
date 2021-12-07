@@ -24,7 +24,7 @@ export class CowDto {
     weight: number
 
     @ApiProperty()
-    @IsNotEmpty({ message: "Sexo não inforomado! "})
+    @IsNotEmpty({ message: "Sexo não informado! "})
     gender: string
 
     @ApiProperty()

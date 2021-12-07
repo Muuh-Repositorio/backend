@@ -23,7 +23,8 @@ export class GetCowsByFarm implements ServiceCommand {
                 lastinsemination:cow.lastinsemination === null ? null : new Date(cow.lastinsemination).toLocaleDateString('pt-BR'),
                 diagnosis: cow.diagnosis === true ? 'Positivo' : cow.diagnosis === false ? 'Negativo' : null,
                 idt_situation: cow.idt_situation,
-                situation: cow.situation
+                situation: cow.situation,
+                gender: cow.gender
             }
         })
     }

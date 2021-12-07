@@ -7,10 +7,11 @@ import { Semen } from "../entity/Semen.entity";
 @EntityRepository(Semen)
 export class SaveSemenInDatabase extends Repository<Semen> implements ServiceCommand {
     async execute(semenDto: SemenDto): Promise<Semen> {
-        const { idt_type } = semenDto
+        const { idt_type, idt_farm } = semenDto
 
         const semen = this.create()
         semen.idt_type = idt_type
+        semen.idt_farm = idt_farm
 
         try {
             await semen.save()

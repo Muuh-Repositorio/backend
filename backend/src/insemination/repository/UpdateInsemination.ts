@@ -1,12 +1,13 @@
 import { InternalServerErrorException } from "@nestjs/common";
 import { EntityRepository, Repository } from "typeorm";
 import { InseminationDto } from "../dto/InseminationDto";
+import { UpdateInseminationDto } from "../dto/UpdateInseminationDto";
 import { Insemination } from "../entity/Insemination.entity";
 
 @EntityRepository(Insemination)
 export class UpdateInseminationInDatabase extends Repository<Insemination>{
-    async execute(inseminationDTO: InseminationDto, idt_insemination: number): Promise<Insemination>{
-        const { diagnosis, insemination_date } = inseminationDTO
+    async execute(inseminationDTO: UpdateInseminationDto, idt_insemination: number): Promise<Insemination>{
+        const { insemination_date, diagnosis } = inseminationDTO
 
         const insemination = this.create()
 

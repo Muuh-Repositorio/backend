@@ -61,7 +61,8 @@ import { ValidateCowController } from './controllers/ValidateCow.controller';
     GetCowsBySituation,
     GetCowsByFarm,
     GetCowsAbleFor,
-    UpdateCow
+    UpdateCow,
+    GetCowById
   ]
 })
 export class CowModule {}
