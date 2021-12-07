@@ -21,6 +21,8 @@ import { WeightHistoryModule } from 'src/weight_history/weight_history.module';
 import { TypeCowModule } from 'src/type_cow/TypeCow.module';
 import { ValidateCow } from './services/ValidateCow.service';
 import { ValidateCowController } from './controllers/ValidateCow.controller';
+import { GetCowStats } from './services/GetCowsStats.service';
+import { GetCowStatsController } from './controllers/GetCowStats.controller';
 
 @Module({
   imports: [
@@ -42,7 +44,8 @@ import { ValidateCowController } from './controllers/ValidateCow.controller';
     GetCowsByFarmController,
     GetCowsAbleForController,
     UpdateCowController,
-    ValidateCowController
+    ValidateCowController,
+    GetCowStatsController
   ],
   providers: [
     SaveCow,
@@ -55,7 +58,8 @@ import { ValidateCowController } from './controllers/ValidateCow.controller';
     GetCowsByFarm,
     GetCowsAbleFor,
     UpdateCow,
-    ValidateCow
+    ValidateCow,
+    GetCowStats
   ],
   exports: [
     GetCowsBySituation,
