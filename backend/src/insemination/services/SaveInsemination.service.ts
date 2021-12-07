@@ -35,11 +35,11 @@ export class SaveInsemination implements ServiceCommand {
         if(idt_semen) {
             const semenExist = await this.getSemenById.execute(idt_semen)
             if (!semenExist) throw new BadRequestException('Semen não encontrado!')
-            await this.deleteSemen.execute(idt_semen)
         }
-
+        
         const insemination = await this.saveInseminationInDatabase.execute(inseminationDto);
         this.updateCow.execute({ situation: Situations.getID(Situations.INSEMINATED) }, inseminationDto.idt_cow)
+        if (idt_semen) await this.deleteSemen.execute(idt_semen)
         
         return {
             idt_insemination: insemination.idt_insemination,

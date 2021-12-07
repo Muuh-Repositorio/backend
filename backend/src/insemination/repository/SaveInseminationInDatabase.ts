@@ -1,5 +1,4 @@
 import { BadRequestException, ConflictException, InternalServerErrorException } from "@nestjs/common";
-import console from "console";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { EntityRepository, Repository } from "typeorm";
 import { InseminationDto } from "../dto/InseminationDto";
@@ -10,7 +9,6 @@ export class SaveInseminationInDatabase extends Repository<Insemination>  {
 
     async execute(inseminationDto: InseminationDto): Promise<Insemination> {
         const { idt_cow, insemination_date, idt_bull, idt_semen } = inseminationDto
-
         const insemination = this.create()
 
         if (idt_bull) insemination.idt_bull = idt_bull
@@ -21,7 +19,6 @@ export class SaveInseminationInDatabase extends Repository<Insemination>  {
         if (!idt_bull && !idt_semen) {
             throw new BadRequestException('Insira o código do touro ou o código do sêmen!')
         }
-
         try {
             await insemination.save()
             return insemination
@@ -29,7 +26,6 @@ export class SaveInseminationInDatabase extends Repository<Insemination>  {
             if (error.code === '23505') {
                 throw new ConflictException('Inseminação já existe!')
             } else {
-                console.log(error)
                 throw new InternalServerErrorException('Erro no servidor!')
             }
         }
