@@ -1,19 +1,19 @@
 import { ConflictException, InternalServerErrorException } from "@nestjs/common";
-import console from "console";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
 import { EntityRepository, Repository } from "typeorm";
 import { CowDto } from "../dto/CowDto";
 import { Cow } from "../entity/Cow.entity";
 
 @EntityRepository(Cow)
-export class SaveCowInDatabase extends Repository<Cow>  {
+export class SaveCowInDatabase extends Repository<Cow> implements ServiceCommand {
 
     async execute(cowDto: CowDto, idt_situation: number): Promise<Cow> {
-        const { idt_farm, idt_type, code, name, weight, birth_date } = cowDto
+        const { idt_farm, idt_type, code, name, weight, birth_date, gender } = cowDto
 
         const cow = this.create()
 
         cow.idt_situation = idt_situation
+        cow.gender = gender
         cow.idt_farm = idt_farm
         cow.idt_type = idt_type
         cow.code = code

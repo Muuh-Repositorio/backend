@@ -40,6 +40,7 @@ export class SaveCow implements ServiceCommand {
         return {
             idt_cow: cow.idt_cow,
             idt_situation: cow.idt_situation,
+            gender: cow.gender,
             idt_farm: cow.idt_farm,
             idt_type: cow.idt_type,
             code: cow.code,

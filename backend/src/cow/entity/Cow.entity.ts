@@ -23,6 +23,9 @@ export class Cow extends BaseEntity {
     birth_date: string
 
     @Column()
+    gender: string
+
+    @Column()
     @ManyToOne(() => CowSituations, cowSituation => cowSituation.cows)
     @JoinColumn({ name: 'idt_situation' })
     idt_situation: number
