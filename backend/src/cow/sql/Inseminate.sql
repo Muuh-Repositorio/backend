@@ -25,5 +25,6 @@ from cow c
     join cow_situations cs
         on c.idt_situation = cs.idt_situation
 where 
-    ((c.idt_situation = 2) or (cb.lastDate + days_ <= current_date)) 
-    and c.idt_farm = idFarm;
+    ((c.idt_situation = 2) or (c.idt_situation = 6 and cb.lastDate + days_ <= current_date)) 
+    and c.idt_farm = idFarm
+    and c.gender = 'F';

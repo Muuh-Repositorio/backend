@@ -31,4 +31,5 @@ from cow c
 where
     c.idt_situation = 3 
     and (li.lastDate + days_ <= current_date)
-    and c.idt_farm = idFarm;
+    and c.idt_farm = idFarm
+    and c.gender = 'F';
