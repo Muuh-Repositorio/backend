@@ -9,6 +9,7 @@ import { TypeCowModule } from './type_cow/TypeCow.module';
 import { InseminationModule } from './insemination/insemination.module';
 import { CowSituationsModule } from './cow_situations/cow_situtations.module';
 import { WeightHistoryModule } from './weight_history/weight_history.module';
+import { SemenModule } from './semen/semen.module';
 require('dotenv').config()
 
 @Module({
@@ -21,7 +22,8 @@ require('dotenv').config()
     TypeCowModule,
     InseminationModule,
     CowSituationsModule,
-    WeightHistoryModule
+    WeightHistoryModule,
+    SemenModule
   ],
   controllers: [],
   providers: [],
