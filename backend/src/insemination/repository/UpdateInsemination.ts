@@ -10,8 +10,7 @@ export class UpdateInseminationInDatabase extends Repository<Insemination>{
         const { insemination_date, diagnosis } = inseminationDTO
 
         const insemination = this.create()
-
-        if (diagnosis) insemination.diagnosis = diagnosis
+        if (diagnosis !== null) insemination.diagnosis = (diagnosis === 'true')
         if (insemination_date) insemination.insemination_date = insemination_date
 
         insemination.idt_insemination = idt_insemination
