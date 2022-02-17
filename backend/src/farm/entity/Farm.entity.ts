@@ -1,5 +1,6 @@
 import { Users } from "src/auth/entity/User.entity";
 import { Cow } from "src/cow/entity/Cow.entity";
+import { Semen } from "src/semen/entity/Semen.entity";
 import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Notifications } from "../interfaces/Notifications.enum";
 
@@ -26,4 +27,7 @@ export class Farm extends BaseEntity {
 
     @OneToMany(() => Cow, cow => cow.idt_farm)
     cows: Cow[]
+
+    @OneToMany(() => Semen, semen => semen.idt_farm)
+    semens: Semen[]
 }

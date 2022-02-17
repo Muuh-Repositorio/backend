@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ServiceCommand } from "src/Interfaces/ServiceCommand";
+import { Childbirth } from "../entity/Childbirth.entity";
 import { ChildbirthResponse } from "../interfaces/ChildbirthResponse";
 import { ChildbirthRepository } from "../repository/ChildbirthRepository";
 
@@ -11,18 +12,13 @@ export class GetChildbirthByCow implements ServiceCommand{
         private childbirthRepository: ChildbirthRepository
     ){}
 
-    async execute(idt_cow: number): Promise<ChildbirthResponse>{
-        const childbirth = await this.childbirthRepository.findOne({ idt_cow: idt_cow })
+    async execute(idt_cow: number): Promise<Childbirth[]>{
+        const childbirth = await this.childbirthRepository.find({ idt_cow: idt_cow })
 
         if(!childbirth){
             throw new NotFoundException('Parto não encontrado!')
         }
 
-        return {
-            idt_childbirth: childbirth.idt_childbirth,
-            idt_cow: childbirth.idt_cow,
-            childbirth_date: childbirth.childbirth_date,
-            cows: childbirth.cows
-        }
+        return childbirth
     }
 }

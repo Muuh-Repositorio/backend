@@ -2,7 +2,7 @@ import { ApiProperty } from "@nestjs/swagger";
 
 export class UpdateInseminationDto {
     @ApiProperty()
-    diagnosis: boolean
+    diagnosis: any
 
     @ApiProperty()
     insemination_date: string

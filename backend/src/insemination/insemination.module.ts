@@ -1,10 +1,12 @@
 import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CowModule } from 'src/cow/cow.module';
+import { SemenModule } from 'src/semen/semen.module';
 import { SaveInseminationController, GetInseminationByCowController, GetInseminationsByFarmController } from './controllers/index';
 import { UpdateInseminationController } from './controllers/UpdateInsemination.controller';
 import { InseminationRepository, SaveInseminationInDatabase } from './repository/index';
 import { UpdateInseminationInDatabase } from './repository/UpdateInsemination';
+import { GetInseminationsByCow } from './services/GetInseminationsByCow.service';
 import { GetInseminationByCow, SaveInsemination, GetInseminationsByFarm } from './services/index';
 import { UpdateInsemination } from './services/UpdateInsemination.service';
 
@@ -15,6 +17,7 @@ import { UpdateInsemination } from './services/UpdateInsemination.service';
       SaveInseminationInDatabase,
       UpdateInseminationInDatabase
     ]),
+    SemenModule,
     forwardRef(() => CowModule)
   ],
   controllers: [
@@ -27,11 +30,13 @@ import { UpdateInsemination } from './services/UpdateInsemination.service';
     SaveInsemination,
     GetInseminationByCow,
     GetInseminationsByFarm,
-    UpdateInsemination
+    UpdateInsemination,
+    GetInseminationsByCow
   ],
   exports: [
     GetInseminationByCow,
-    GetInseminationsByFarm
+    GetInseminationsByFarm,
+    GetInseminationsByCow
   ]
 })
 export class InseminationModule {}

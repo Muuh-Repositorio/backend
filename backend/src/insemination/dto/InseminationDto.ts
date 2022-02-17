@@ -8,7 +8,10 @@ export class InseminationDto {
     idt_cow: number
 
     @ApiProperty()
-    diagnosis: boolean
+    idt_bull?: number
+
+    @ApiProperty()
+    idt_semen?: number
 
     @ApiProperty()
     @IsNotEmpty({ message: "Data de inseminação não informado!" })

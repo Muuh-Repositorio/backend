@@ -2,10 +2,11 @@ with lastInsemination as
     (
         select
             idt_cow,
+            idt_insemination,
             max(insemination_date) lastDate
         from insemination
-        where insemination.diagnosis = false
-        group by idt_cow
+        where insemination.diagnosis is null
+        group by idt_cow, idt_insemination
     )
 select
     u.name user_name,
@@ -15,6 +16,7 @@ select
     c.name cow_name,
     c.weight,
     li.lastDate insemination_date,
+    li.idt_insemination,
     cs.situation,
     f.name farm_name
 from cow c
@@ -29,4 +31,5 @@ from cow c
 where
     c.idt_situation = 3 
     and (li.lastDate + days_ <= current_date)
-    and c.idt_farm = idFarm;
+    and c.idt_farm = idFarm
+    and c.gender = 'F';
