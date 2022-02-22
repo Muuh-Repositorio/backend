@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from 'src/auth/auth.module';
-import { GetBirthsByFarmController } from './controllers/GetBirthsByFarm.controller';
+import { GetBirthsByFarmController } from './controllers/GetChildbirthsByFarm.controller';
 import { ChildbirthByCowController } from './controllers/GetChildbirthByCow.controller';
 import { GetChildbirthByDateController } from './controllers/GetChildbirthByDate.controller';
 import { SaveChildbirthController } from './controllers/SaveChildbirth.controller';
