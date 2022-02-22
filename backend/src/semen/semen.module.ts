@@ -1,9 +1,12 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { DeleteSemenController } from "./controllers/DeleteSemen.controller";
+import { GetAllSemensByFarmController } from "./controllers/GetAllSemensByFarm.controller";
 import { SaveSemenController } from "./controllers/SaveSemen.controller";
 import { SaveSemenInDatabase } from "./repository/SaveSemenInDatabase";
 import { SemenRepository } from "./repository/SemenRepository";
 import { DeleteSemen } from "./services/DeleteSemen.service";
+import { GetAllSemensByFarm } from "./services/GetAllSemensByFarm.service";
 import { GetSemenById } from "./services/GetSemenById.service";
 import { SaveSemen } from "./services/SaveSemen.service";
 
@@ -15,12 +18,15 @@ import { SaveSemen } from "./services/SaveSemen.service";
         ])
     ],
     controllers: [
-        SaveSemenController
+        SaveSemenController,
+        DeleteSemenController,
+        GetAllSemensByFarmController
     ],
     providers: [
         SaveSemen,
         GetSemenById,
-        DeleteSemen
+        DeleteSemen,
+        GetAllSemensByFarm
     ],
     exports: [
         GetSemenById,
