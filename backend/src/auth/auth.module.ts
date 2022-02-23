@@ -9,12 +9,14 @@ import { LocalStrategy } from './jwt/local.strategy';
 import { UserIdValidation } from './pipes';
 import { UserRepository, SaveUserInDatabase } from './repository/index';
 import { AuthService } from './services/Auth.service';
+import { ForgotPassword } from './services/ForgotPassword.service';
 import { GetUserByCpf } from './services/GetUserByCpf.service';
 import { EmailValidation, GetUserById, HashPassword, SaveUser, SendEmail, ValidateToken } from './services/index';
 import { UserCpfValidation } from './pipes/UserCpfValidation.pipe';
 import { UpdateUserInDatabase } from './repository/UpdateUserInDatabase';
 import { UpdateUserController } from './controllers/UpdateUser.controller';
 import { UpdateUser } from './services/UpdateUser.service';
+import { ForgotPasswordController } from './controllers/ForgotPassowrd.controller';
 require('dotenv').config()
 
 @Module({
@@ -36,7 +38,8 @@ require('dotenv').config()
     EmailValidationController,
     AuthController,
     ValidateTokenController,
-    UpdateUserController
+    UpdateUserController,
+    ForgotPasswordController
   ],
   providers: [
     GetUserById,
@@ -51,7 +54,8 @@ require('dotenv').config()
     UserIdValidation,
     UserCpfValidation,
     ValidateToken,
-    UpdateUser
+    UpdateUser,
+    ForgotPassword
   ],
   exports: [
     AuthService,
