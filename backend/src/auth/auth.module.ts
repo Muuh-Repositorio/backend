@@ -17,6 +17,8 @@ import { UpdateUserInDatabase } from './repository/UpdateUserInDatabase';
 import { UpdateUserController } from './controllers/UpdateUser.controller';
 import { UpdateUser } from './services/UpdateUser.service';
 import { ForgotPasswordController } from './controllers/ForgotPassowrd.controller';
+import { ResetPassword } from './services/ResetPassword.service';
+import { ResetPasswordController } from './controllers/ResetPassword.controller';
 require('dotenv').config()
 
 @Module({
@@ -39,7 +41,8 @@ require('dotenv').config()
     AuthController,
     ValidateTokenController,
     UpdateUserController,
-    ForgotPasswordController
+    ForgotPasswordController,
+    ResetPasswordController
   ],
   providers: [
     GetUserById,
@@ -55,7 +58,8 @@ require('dotenv').config()
     UserCpfValidation,
     ValidateToken,
     UpdateUser,
-    ForgotPassword
+    ForgotPassword,
+    ResetPassword
   ],
   exports: [
     AuthService,
