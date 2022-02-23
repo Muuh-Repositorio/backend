@@ -24,6 +24,12 @@ export class Users extends BaseEntity {
     @Column({ default: false })
     verifed_email: boolean
 
+    @Column({ nullable: true })
+    passwordResetToken: string
+    
+    @Column({ nullable: true })
+    passwordResetExpires: Date
+
     @OneToMany(() => Farm, farm => farm.user)
     farms: Farm[]
 }
