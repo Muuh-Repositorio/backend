@@ -26,7 +26,6 @@ export class SaveUserInDatabase extends Repository<Users> implements ServiceComm
             if (error.code === '23505') {
                 throw new ConflictException('Usuário já existe!')
             } else {
-                console.log(error)
                 throw new InternalServerErrorException('Erro no servidor!')
             }
         }

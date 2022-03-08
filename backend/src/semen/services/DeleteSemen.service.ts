@@ -11,6 +11,6 @@ export class DeleteSemen implements ServiceCommand {
     ) {}
 
     async execute(idt_semen: number) {
-        await this.semenRepository.delete({ idt_semen: idt_semen })
+        await this.semenRepository.update({ idt_semen: idt_semen }, { used: true })
     }
 }

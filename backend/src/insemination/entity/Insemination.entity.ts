@@ -11,7 +11,7 @@ export class Insemination extends BaseEntity {
     @JoinColumn({ name: 'idt_cow' })
     idt_cow: number
 
-    @Column({ nullable: null })
+    @Column({ default: null })
     @ManyToOne(() => Cow, cow => cow.inseminations)
     @JoinColumn({ name: 'idt_bull' })
     idt_bull: number

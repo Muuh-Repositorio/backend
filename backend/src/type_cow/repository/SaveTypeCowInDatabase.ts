@@ -22,7 +22,6 @@ export class SaveTypeCowInDatabase extends Repository<TypeCow> implements Servic
             if(error.code === '23505'){
                 throw new ConflictException('Tipo já cadastrado!')
             }else{
-                console.log(error)
                 throw new InternalServerErrorException('Erro no servidor')
             }
         }

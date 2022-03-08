@@ -23,7 +23,6 @@ export class SaveChildbirthInDatabase extends Repository<Childbirth> implements 
             if(error.code === '23505'){
                 throw new ConflictException('Parto já cadastrado!')
             }else{
-                console.log(error)
                 throw new InternalServerErrorException('Erro no servidor!')
             }
         }
