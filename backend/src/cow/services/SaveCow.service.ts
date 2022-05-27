@@ -21,7 +21,7 @@ export class SaveCow implements ServiceCommand {
 
     async execute(cowDto: CowDto): Promise<CowResponse> {
         const cowParams: CowParamsDto = { 
-            birth_date: new Date(cowDto.birth_date).toLocaleDateString('pt-BR'),
+            birth_date: cowDto.birth_date,
             weight: Number(cowDto.weight),
             idt_type: Number(cowDto.idt_type) 
         }
