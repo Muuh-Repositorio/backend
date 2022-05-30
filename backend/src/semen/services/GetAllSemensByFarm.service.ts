@@ -12,6 +12,17 @@ export class GetAllSemensByFarm implements ServiceCommand {
     ) {}
 
     async execute(idt_farm: number): Promise<Semen[]> {
-        return await this.semenRepository.find({ idt_farm: idt_farm })
+        const semens = await this.semenRepository.manager.query(
+            `SELECT
+                IDT_SEMEN
+            ,   TC.TYPE
+            ,   USED
+            FROM 
+                SEMEN S
+                JOIN TYPE_COW TC
+                    ON TC.IDT_TYPE = S.IDT_TYPE
+            WHERE S.IDT_FARM = ${idt_farm}`
+        )
+        return semens
     }
 }

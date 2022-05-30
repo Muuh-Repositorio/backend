@@ -78,14 +78,11 @@ export class Notification{
         
         if(insemination_date_today != ''){
             const responseTodayDiagnosis = await this.functions.querys(insemination_date_today, 'insemination') 
-            console.log(responseTodayDiagnosis)
-            
             this.functions.sendText(client, responseTodayDiagnosis, 'mimosinha(s) está/estão apta(s) para ser/serem diagnosticada(s) *hoje*', '🩺🐄')
         }
         
         if(insemination_date_three_days != ''){
             const responseThreeDaysBeforeDiagnosis = await this.functions.querys(insemination_date_three_days, 'insemination')
-            
             this.functions.sendText(client, responseThreeDaysBeforeDiagnosis, 'mimosinha(s) estarão apta(s) para iniciar/iniciarem a secagem daqui a *3️⃣ dias*', '🩺🐄`')
         }
     }

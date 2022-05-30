@@ -31,8 +31,8 @@ async function bootstrap() {
   const saveCowSituations = new SaveCowSituations()
   await saveCowSituations.execute()
 
-  const initChatbot = new Chatbot(new Notification())
-  initChatbot.execute()
+  // const initChatbot = new Chatbot(new Notification())
+  // initChatbot.execute() 
   
   await app.listen(3000);
 }

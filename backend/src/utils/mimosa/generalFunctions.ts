@@ -38,6 +38,7 @@ export class Functions{
     }
 
     async sendText(client: any, responseArray: any[], middleMessage: string, finalMessage: string){
+        console.log('aiiaiaiai');
         for(let i = 0; i < responseArray.length; i++){
             await client.sendText(`55${responseArray[i].phone}@c.us`, 
                 `Olá, *${responseArray[i].farmer} 👋*. 
